@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { resume } from '../../data/resume';
+
+export function getStaticPaths() {
+  return resume.projects.map((project) => ({
+    params: { 
+      slug: project.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') 
+    },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.name} | Projects`}>
+  <Navbar />
+  <main class="pt-24 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb -->
+      <div class="mb-8 font-mono text-sm text-slate-500">
+        <a href="/" class="hover:text-terminal-green">~/home</a>
+        <span class="mx-2">/</span>
+        <a href="/#projects" class="hover:text-terminal-green">projects</a>
+        <span class="mx-2">/</span>
+        <span class="text-terminal-green">{project.name.toLowerCase().replace(/ /g, '_')}</span>
+      </div>
+
+      <div class="bg-terminal-slate/20 border border-terminal-slate/50 rounded-lg overflow-hidden">
+        <div class="p-8">
+          <h1 class="font-mono text-3xl md:text-4xl font-bold text-white mb-4">
+            {project.name}
+          </h1>
+          
+          <p class="text-xl text-terminal-green font-mono mb-8 border-b border-terminal-slate/30 pb-4">
+            {project.description}
+          </p>
+
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-lg font-bold text-white mb-4 flex items-center">
+                <span class="text-terminal-green mr-2">#</span> Project Highlights
+              </h3>
+              <ul class="space-y-3">
+                {project.highlights.map((highlight) => (
+                  <li class="flex items-start text-slate-300">
+                    <span class="text-terminal-green mr-3 mt-1.5 text-xs">▶</span>
+                    <span class="leading-relaxed">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Placeholder for potential future content like tech stack tags if added to data -->
+            <div class="pt-6 border-t border-terminal-slate/30">
+              <div class="flex items-center text-slate-500 font-mono text-sm">
+                <span class="mr-2">Status:</span>
+                <span class="text-terminal-green">Completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <a 
+          href="/#projects" 
+          class="inline-flex items-center px-6 py-3 border border-terminal-slate text-slate-300 font-mono rounded hover:border-terminal-green hover:text-terminal-green transition-colors"
+        >
+          <span class="mr-2">←</span> cd ..
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

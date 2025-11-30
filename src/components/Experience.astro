@@ -1,0 +1,39 @@
+---
+import { resume } from '../data/resume';
+---
+
+<section id="experience" class="py-20 bg-terminal-dark/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-mono text-3xl text-white mb-12 flex items-center">
+      <span class="text-terminal-green mr-4">02.</span> 
+      ~/experience
+      <span class="ml-4 h-px bg-terminal-slate flex-grow"></span>
+    </h2>
+
+    <div class="space-y-12">
+      {resume.experience.map((job) => (
+        <div class="relative pl-8 border-l border-terminal-slate hover:border-terminal-green transition-colors duration-300 group">
+          <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-terminal-slate group-hover:bg-terminal-green transition-colors duration-300"></div>
+          
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+            <h3 class="text-xl font-bold text-white group-hover:text-terminal-green transition-colors">
+              {job.position} <span class="text-terminal-green">@</span> {job.company}
+            </h3>
+            <span class="font-mono text-sm text-slate-500">{job.startDate} — {job.endDate}</span>
+          </div>
+          
+          <p class="text-slate-400 mb-4 italic">{job.summary}</p>
+          
+          <ul class="space-y-2">
+            {job.highlights.map((highlight) => (
+              <li class="flex items-start text-slate-400 text-sm">
+                <span class="text-terminal-green mr-2 mt-1">▹</span>
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

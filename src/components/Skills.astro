@@ -1,0 +1,15 @@
+---
+import { resume } from '../data/resume';
+---
+
+<section class="py-10 border-y border-terminal-slate/30 bg-terminal-slate/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      {resume.skills.map((skill) => (
+        <div class="px-4 py-2 bg-terminal-dark border border-terminal-slate rounded text-slate-300 font-mono text-sm hover:border-terminal-green hover:text-terminal-green transition-colors cursor-default">
+          {skill}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
