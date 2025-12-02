@@ -88,7 +88,7 @@ export const resume = {
             description: "Migrated a mission-critical employee portal from Liferay DXP 7.2 to 7.4 in a high-security, air-gapped environment. Achieved high availability with a Layer 7 clustered architecture.",
             category: "devops",
             tags: ["Liferay DXP", "Oracle DB", "On-Premise", "High Availability", "Migration"],
-            image: "/images/liferay-vector-logo.svg",
+            image: "/images/liferay-logo.png",
             link: "#",
             cta: "View Case Study",
             details: {
