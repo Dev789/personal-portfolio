@@ -1,9 +1,12 @@
 ---
+const { pathname } = Astro.url;
+const isHome = pathname === '/';
+
 const navItems = [
-  { name: 'About', href: '#about' },
-  { name: 'Stack', href: '#stack' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'CLI', href: '#cli' },
+  { name: 'About', href: isHome ? '#about' : '/#about' },
+  { name: 'Stack', href: isHome ? '#stack' : '/#stack' },
+  { name: 'Projects', href: isHome ? '#projects' : '/#projects' },
+  { name: 'CLI', href: isHome ? '#cli' : '/#cli' },
 ];
 ---
 
