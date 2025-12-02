@@ -97,5 +97,53 @@ export const resume = {
                 ]
             }
         },
+        {
+            name: "Cloud Architecture & Cost Optimization",
+            description: "Re-architected a fintech AI platform to eliminate 100% of external database costs and standardize deployments using GitOps on GKE AutoPilot.",
+            category: "cloud",
+            tags: ["GCP", "GKE AutoPilot", "ArgoCD", "MongoDB", "GitOps"],
+            image: "/images/cloud-architecture.jpg",
+            link: "#",
+            cta: "View Case Study",
+            details: {
+                challenge: "Ferret.ai faced bloated database spending due to vendor lock-in and operational inconsistency across environments. Deployments were prone to drift, requiring manual oversight.",
+                strategy: "Migrated to a self-managed, sharded MongoDB on GCE to slash costs to $0. Standardized deployments using GitOps (ArgoCD) on GKE AutoPilot for consistency and rapid deployment.",
+                implementation: [
+                    "Database: Architected self-managed MongoDB on GCE, reducing external vendor costs to $0.",
+                    "Orchestration: Migrated to GKE AutoPilot to offload node management and patching.",
+                    "GitOps: Implemented ArgoCD for consistent, automated deployments across 4 environments.",
+                    "Scaling: Configured HPA for auto-scaling based on CPU and custom metrics to ensure 99.99% uptime."
+                ],
+                metrics: [
+                    { label: "DB Cost Reduction", value: "100%", change: "Vendor → Self-Hosted" },
+                    { label: "Deployment Errors", value: "~0%", change: "Manual → GitOps" },
+                    { label: "Uptime", value: "99.99%", change: "High Availability" }
+                ]
+            }
+        },
+        {
+            name: "Real-Time Event Streaming Platform",
+            description: "Architected a high-volume social media webhook platform on AWS using Kafka and Docker Swarm to process 1,000+ events/minute with 99.9% uptime.",
+            category: "cloud",
+            tags: ["AWS", "Docker Swarm", "Kafka", "Python"],
+            image: "/images/event-streaming.jpg",
+            link: "#",
+            cta: "View Case Study",
+            details: {
+                challenge: "Handling a high-velocity, unpredictable firehose of webhook data (1,000+ events/minute) from social media APIs. The goal was to build a highly available platform capable of real-time processing with zero data loss.",
+                strategy: "Implemented an event-driven architecture using a self-managed Apache Kafka cluster as the durable message bus. Leveraged Docker Swarm for lightweight microservices orchestration and AWS (EC2, ASG, ALB) for infrastructure resilience.",
+                implementation: [
+                    "Architecture: Deployed multi-AZ AWS infrastructure with EC2, Auto Scaling Groups, and ALB for high availability.",
+                    "Streaming: Built a self-managed Apache Kafka cluster to decouple producers from consumers and ensure data durability.",
+                    "Orchestration: Used Docker Swarm to manage Python-based microservices for real-time data processing.",
+                    "Observability: Implemented custom monitoring for Consumer Group Lag and Broker Disk I/O to prevent bottlenecks."
+                ],
+                metrics: [
+                    { label: "Throughput", value: "1k+ ev/min", change: "Zero Backpressure" },
+                    { label: "Uptime", value: "99.9%", change: "High Availability" },
+                    { label: "Latency", value: "Real-time", change: "Immediate Scaling" }
+                ]
+            }
+        },
     ],
 };
