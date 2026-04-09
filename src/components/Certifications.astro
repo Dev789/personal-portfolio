@@ -13,16 +13,28 @@ import { resume } from '../data/resume';
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {resume.certifications?.map((cert) => (
-        <div class="bg-slate-50 dark:bg-navy-800 p-8 rounded-2xl border border-slate-200 dark:border-white/5 hover:border-primary/30 transition-all group">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-primary/10 rounded-xl text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><path d="m12 17 1-2V9l-1-1-1 1v6z"/><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"/><path d="M12 13V7"/><path d="m9 22 3-3 3 3"/></svg>
+        <a href={cert.link} target="_blank" class="bg-slate-50 dark:bg-navy-800 p-8 rounded-2xl border border-slate-200 dark:border-white/5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all group block">
+          <div class="flex items-start justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white dark:bg-navy-900 rounded-lg p-2 flex items-center justify-center border border-slate-200 dark:border-white/5 group-hover:border-primary/30 transition-colors">
+                <img src="/images/logos/anthropic_dark.svg" alt="Anthropic" class="w-full h-full dark:hidden" />
+                <img src="/images/logos/anthropic_light.svg" alt="Anthropic" class="w-full h-full hidden dark:block" />
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">{cert.issuer}</p>
+                <p class="text-xs text-slate-500 font-mono">{cert.date}</p>
+              </div>
             </div>
-            <span class="text-sm font-medium text-slate-500 font-mono">{cert.date}</span>
+            <div class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+            </div>
           </div>
           <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">{cert.name}</h3>
-          <p class="text-slate-600 dark:text-slate-400 font-medium">{cert.issuer}</p>
-        </div>
+          <div class="flex items-center gap-2 text-primary font-medium text-sm">
+             <span>Verify Certificate</span>
+             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
       ))}
     </div>
   </div>

@@ -248,8 +248,23 @@ export const resume = {
         },
     ],
     certifications: [
-        { name: "AI Fluency Framework & Foundations", issuer: "Anthropic", date: "Apr 2026" },
-        { name: "Introduction to subagents", issuer: "Anthropic", date: "Apr 2026" },
-        { name: "Introduction to agent skills", issuer: "Anthropic", date: "Apr 2026" }
+        { 
+            name: "AI Fluency Framework & Foundations", 
+            issuer: "Anthropic", 
+            date: "Apr 2026",
+            link: "https://verify.skilljar.com/c/ys6zc4cqbp3y"
+        },
+        { 
+            name: "Introduction to agent skills", 
+            issuer: "Anthropic", 
+            date: "Apr 2026",
+            link: "https://verify.skilljar.com/c/9znximgm9pid"
+        },
+        { 
+            name: "Introduction to subagents", 
+            issuer: "Anthropic", 
+            date: "Apr 2026",
+            link: "https://verify.skilljar.com/c/kfnmw7tzs8fr"
+        }
     ]
 };
