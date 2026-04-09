@@ -1,0 +1,29 @@
+---
+import { resume } from '../data/resume';
+---
+
+<section id="certifications" class="py-24 bg-white dark:bg-navy-900 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Certifications</h2>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+        Recognized expertise in emerging technologies and industry standards.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {resume.certifications?.map((cert) => (
+        <div class="bg-slate-50 dark:bg-navy-800 p-8 rounded-2xl border border-slate-200 dark:border-white/5 hover:border-primary/30 transition-all group">
+          <div class="flex items-start justify-between mb-4">
+            <div class="p-3 bg-primary/10 rounded-xl text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><path d="m12 17 1-2V9l-1-1-1 1v6z"/><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"/><path d="M12 13V7"/><path d="m9 22 3-3 3 3"/></svg>
+            </div>
+            <span class="text-sm font-medium text-slate-500 font-mono">{cert.date}</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-primary transition-colors">{cert.name}</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium">{cert.issuer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

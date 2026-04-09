@@ -6,8 +6,8 @@ export const resume = {
         phone: "9638140640",
         location: "Ahmedabad, Gujarat",
         handle: "dev-joshi",
-        url: "/dev_joshi_resume.pdf",
-        summary: "DevOps Engineer with proven experience managing and optimizing cloud infrastructure across AWS, GCP, and Azure. Skilled in building and maintaining CI/CD pipelines, automating deployments, implementing monitoring solutions, and ensuring security compliance. Adept at collaborating with cross-functional teams to deliver scalable, cost-efficient, and high-performance solutions.",
+        url: "/Dev_Joshi_Resume.pdf",
+        summary: "Dynamic DevOps Engineer with a strong expertise in Cloud Infrastructure, Security (IAM/SSO), and emerging AI Agentic technologies. Proven track record in leading large-scale migrations, mastering Liferay clustering, and architecting microservices-driven platforms. Adept at translating complex business requirements into robust, cost-efficient infrastructure while maintaining rigorous SOC 2 compliance standards.",
         profiles: [
             {
                 network: "LinkedIn",
@@ -75,86 +75,181 @@ export const resume = {
         ],
         containerization: ["Docker", "Kubernetes (K8s)", "Helm", "OpenShift", "EKS/AKS", "GKE AutoPilot"],
         iac: ["Terraform (Expert)", "Ansible", "CloudFormation", "Pulumi"],
-        cicd: ["Jenkins", "GitLab CI", "GitHub Actions", "ArgoCD"],
+        cicd: ["Jenkins", "GitLab CI", "GitHub Actions", "ArgoCD", "SonarQube"],
         scripting: ["Python", "Bash"],
         observability: ["Prometheus", "Grafana", "Datadog", "ELK Stack"],
-        databases: ["Oracle DB", "MongoDB", "PostgreSQL"],
+        databases: ["Oracle DB", "MongoDB", "PostgreSQL", "MySQL"],
         platforms: ["Liferay DXP", "Kafka"],
+        emerging: ["AI Fluency", "Prompt Engineering", "Agentic Workflows", "Claude Skills"],
+        security: ["IAM", "SSO", "SOC 2 compliance"]
     },
 
     projects: [
         {
-            name: "Intranet Portal Migration & Platform Modernization",
-            description: "Migrated a mission-critical employee portal from Liferay DXP 7.2 to 7.4 in a high-security, air-gapped environment. Achieved high availability with a Layer 7 clustered architecture.",
+            name: "Government Customs Portal – Liferay Migration & Clustering",
+            description: "Managed the migration of a government customs portal from Liferay 7.2 to 7.4 and designed a highly available clustering setup for improved scalability.",
             category: "devops",
-            tags: ["Liferay DXP", "Oracle DB", "On-Premise", "High Availability", "Migration"],
+            tags: ["Liferay DXP", "Oracle DB", "Clustering", "Migration", "On-Premise"],
             image: "/images/liferay-logo.png",
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Migrating a mission-critical portal in a strict air-gapped environment with no CI/CD or observability. Incompatible Oracle database schemas and custom locale requirements (ar_AE) posed significant risks.",
-                strategy: "Pivoted from automation-first to a process-first governance approach. Implemented a two-stage migration protocol (Baseline + Verification) and a Layer 7 clustered architecture for high availability.",
+                challenge: "Migrating a mission-critical portal in a strict security environment while ensuring zero data loss and achieving high availability through clustering.",
+                strategy: "Implemented a two-node Liferay DXP 7.4 cluster behind a Layer 7 Load Balancer and executed a rigorous two-stage database migration protocol.",
                 implementation: [
-                    "Architecture: Designed a two-node Liferay DXP 7.4 cluster behind a Layer 7 Load Balancer for active-active redundancy.",
-                    "Database Migration: Executed a two-stage protocol using the Liferay Data Migration Tool followed by custom SQL integrity checks to resolve schema incompatibilities.",
-                    "Localization: Manually configured and verified custom ar_AE (Arabic - UAE) locale support, ensuring full UI/UX compliance.",
-                    "Governance: Established strict manual deployment checklists validated by the Change Advisory Board (CAB) to replace automated CI/CD pipelines.",
-                    "Quality Assurance: Conducted exhaustive Content Integrity Checks (Manual QA) on staging environments to guarantee 100% data fidelity before production cutover."
+                    "Migration: Led the version upgrade from 7.2 to 7.4 including database schema reconciliation.",
+                    "Clustering: Designed and maintained a highly available Liferay setup for scalability.",
+                    "Optimization: Oversaw infrastructure provisioning and performance tuning during cutover.",
+                    "Collaboration: Worked with QA and dev teams to ensure minimal downtime."
                 ],
                 metrics: [
                     { label: "Data Fidelity", value: "100%", change: "7.2 → 7.4" },
-                    { label: "Availability", value: "High", change: "Clustered Setup" },
-                    { label: "Downtime Risk", value: "Minimized", change: "Resilient Arch" }
+                    { label: "Availability", value: "High", change: "Clustered Setup" }
                 ]
             }
         },
         {
             name: "Cloud Architecture & Cost Optimization",
-            description: "Re-architected a fintech AI platform to eliminate 100% of external database costs and standardize deployments using GitOps on GKE AutoPilot.",
+            description: "Re-architected a Relationship Intelligence Platform on GCP using GKE, achieving 100% cost reduction on external DB dependencies.",
             category: "cloud",
-            tags: ["GCP", "GKE AutoPilot", "ArgoCD", "MongoDB", "GitOps"],
+            tags: ["GCP", "GKE", "Bitbucket", "Kubernetes", "Reliability"],
             image: "/images/cloud-architecture.jpg",
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Ferret.ai faced bloated database spending due to vendor lock-in and operational inconsistency across environments. Deployments were prone to drift, requiring manual oversight.",
-                strategy: "Migrated to a self-managed, sharded MongoDB on GCE to slash costs to $0. Standardized deployments using GitOps (ArgoCD) on GKE AutoPilot for consistency and rapid deployment.",
+                challenge: "Bloated database spending and operational inconsistency across environments due to manual oversight.",
+                strategy: "Led DevOps efforts on GCP, overseeing deployments and monitoring while maintaining end-to-end reliability of the infrastructure.",
                 implementation: [
-                    "Database: Architected self-managed MongoDB on GCE, reducing external vendor costs to $0.",
-                    "Orchestration: Migrated to GKE AutoPilot to offload node management and patching.",
-                    "GitOps: Implemented ArgoCD for consistent, automated deployments across 4 environments.",
-                    "Scaling: Configured HPA for auto-scaling based on CPU and custom metrics to ensure 99.99% uptime."
+                    "Orchestration: Architected and maintained a highly available Kubernetes cluster on GKE.",
+                    "Infrastructure: Managed full infrastructure using GKE and Bitbucket for automated flows.",
+                    "Reliability: Implemented comprehensive monitoring and alerting for platform stability.",
+                    "Optimization: Reduced external DB costs by standardizing deployments."
                 ],
                 metrics: [
-                    { label: "DB Cost Reduction", value: "100%", change: "Vendor → Self-Hosted" },
-                    { label: "Deployment Errors", value: "~0%", change: "Manual → GitOps" },
+                    { label: "DB Cost Reduction", value: "100%", change: "Standardization" },
                     { label: "Uptime", value: "99.99%", change: "High Availability" }
                 ]
             }
         },
         {
-            name: "Real-Time Event Streaming Platform",
-            description: "Architected a high-volume social media webhook platform on AWS using Kafka and Docker Swarm to process 1,000+ events/minute with 99.9% uptime.",
+            name: "Social Media Manager – Event-Driven Architecture",
+            description: "Designed a highly available AWS-based infrastructure with blue/green deployment for a microservices-driven social media management platform.",
             category: "cloud",
-            tags: ["AWS", "Docker Swarm", "Kafka", "Python"],
+            tags: ["AWS", "Kafka", "Python", "Microservices", "Event-Driven"],
             image: "/images/event-streaming.jpg",
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Handling a high-velocity, unpredictable firehose of webhook data (1,000+ events/minute) from social media APIs. The goal was to build a highly available platform capable of real-time processing with zero data loss.",
-                strategy: "Implemented an event-driven architecture using a self-managed Apache Kafka cluster as the durable message bus. Leveraged Docker Swarm for lightweight microservices orchestration and AWS (EC2, ASG, ALB) for infrastructure resilience.",
+                challenge: "Processing high-velocity webhook data from Facebook and Instagram with zero data loss and real-time durability.",
+                strategy: "Architected microservices in Python integrated with Apache Kafka for scalable event processing and AWS best practices.",
                 implementation: [
-                    "Architecture: Deployed multi-AZ AWS infrastructure with EC2, Auto Scaling Groups, and ALB for high availability.",
-                    "Streaming: Built a self-managed Apache Kafka cluster to decouple producers from consumers and ensure data durability.",
-                    "Orchestration: Used Docker Swarm to manage Python-based microservices for real-time data processing.",
-                    "Observability: Implemented custom monitoring for Consumer Group Lag and Broker Disk I/O to prevent bottlenecks."
+                    "Streaming: Built a Kafka-based pipeline to handle social media webhooks in real-time.",
+                    "Deployment: Implemented blue/green strategy for zero-downtime releases.",
+                    "Security: Enforced network isolation, IAM role-based access, and encryption.",
+                    "Development: Developed core Python services for real-time data ingestion and storage."
                 ],
                 metrics: [
-                    { label: "Throughput", value: "1k+ ev/min", change: "Zero Backpressure" },
-                    { label: "Uptime", value: "99.9%", change: "High Availability" },
-                    { label: "Latency", value: "Real-time", change: "Immediate Scaling" }
+                    { label: "Throughput", value: "High", change: "Event-Driven" },
+                    { label: "Downtime", value: "Zero", change: "Blue/Green" }
+                ]
+            }
+        },
+        {
+            name: "Funnel Builder – Multi-Tenant Infrastructure",
+            description: "Designed and implemented a multi-tenant AWS-based infrastructure for a funnel builder application ensuring high availability and secure isolation.",
+            category: "cloud",
+            tags: ["AWS", "Multi-Tenant", "Blue/Green", "Security", "Infrastructure"],
+            image: "/images/cloud-architecture.jpg",
+            link: "#",
+            cta: "View Case Study",
+            details: {
+                challenge: "Scaling a multi-tenant application while maintaining strict security isolation between clients.",
+                strategy: "Built a highly available AWS setup using network segmentation and blue/green deployment strategy.",
+                implementation: [
+                    "Isolation: Implemented fine-grained IAM policies and network segmentation (VPCs).",
+                    "Deployment: Standardized on blue/green deployment for risk-free updates.",
+                    "Automation: Automated infrastructure provisioning with security defaults.",
+                    "Resilience: Configured multi-AZ setups for high availability."
+                ],
+                metrics: [
+                    { label: "Isolation", value: "Strict", change: "VPC/IAM" },
+                    { label: "Availability", value: "99.9%", change: "Multi-AZ" }
+                ]
+            }
+        },
+        {
+            name: "University System – Video Encoding Platform",
+            description: "Developed a Python-based microservices platform on AWS for real-time video encoding integrated with AWS SQS.",
+            category: "cloud",
+            tags: ["AWS", "SQS", "Python", "Video Encoding", "Microservices"],
+            image: "/images/cloud-architecture.jpg",
+            link: "#",
+            cta: "View Case Study",
+            details: {
+                challenge: "Handling concurrent video encoding jobs efficiently without impacting backend performance.",
+                strategy: "Leveraged AWS SQS to decouple video processing from the main backend and used Python microservices for encoding.",
+                implementation: [
+                    "Decoupling: Integrated AWS SQS to manage the video processing queue.",
+                    "Processing: Developed scalable Python microservices for real-time encoding.",
+                    "Security: Secured the platform with IAM-based access control and network segmentation.",
+                    "Efficiency: Optimized resource usage for concurrent encoding jobs."
+                ],
+                metrics: [
+                    { label: "Processing", value: "Real-time", change: "Queue-based" },
+                    { label: "Scalability", value: "High", change: "Microservices" }
+                ]
+            }
+        },
+        {
+            name: "Real Estate Website – Lambda & MongoDB",
+            description: "Lead DevOps for a multi-tenant real estate platform using AWS Lambda and MongoDB with encrypted cross-VPC connectivity.",
+            category: "cloud",
+            tags: ["AWS Lambda", "MongoDB", "VPC Peering", "Event-Driven", "Multi-Tenant"],
+            image: "/images/cloud-architecture.jpg",
+            link: "#",
+            cta: "View Case Study",
+            details: {
+                challenge: "Ensuring secure and performant communication between serverless functions and a central MongoDB database across accounts.",
+                strategy: "Architected a serverless infrastructure leveraging AWS Lambda and established secure cross-VPC connectivity via VPC peering.",
+                implementation: [
+                    "Serverless: Migrated key workloads to AWS Lambda for event-driven execution.",
+                    "Database: Designed MongoDB architecture with high availability and secure peering.",
+                    "Infrastructure: Managed secure cross-VPC networking and encryption at rest/transit.",
+                    "Optimization: Achieved significant cost savings using serverless compute models."
+                ],
+                metrics: [
+                    { label: "Security", value: "Enhanced", change: "VPC Peering" },
+                    { label: "Cost", value: "Lower", change: "Serverless" }
+                ]
+            }
+        },
+        {
+            name: "Hospitality Service Management – Multi-Tenant GCP",
+            description: "Led DevOps for a multi-tenant hospitality platform on GCP using GKE and GitHub Actions for streamlined CI/CD.",
+            category: "cloud",
+            tags: ["GCP", "GKE", "GitHub Actions", "Multi-Tenant", "Security"],
+            image: "/images/cloud-architecture.jpg",
+            link: "#",
+            cta: "View Case Study",
+            details: {
+                challenge: "Managing multi-tenant security and performance optimization for a high-traffic hospitality platform.",
+                strategy: "Standardized on GKE for orchestration and GitHub for automated CI/CD, focusing on network segmentation.",
+                implementation: [
+                    "Orchestration: Managed GKE clusters with a focus on multi-tenant isolation.",
+                    "CI/CD: Implemented GitHub Actions for automated, secure deployment pipelines.",
+                    "Optimization: Applied performance tuning and best practices for high availability.",
+                    "Governance: Enforced network segmentation and access control policies."
+                ],
+                metrics: [
+                    { label: "Deployment", value: "Automated", change: "GitHub Actions" },
+                    { label: "Uptime", value: "99.99%", change: "Fault Tolerance" }
                 ]
             }
         },
     ],
+    certifications: [
+        { name: "AI Fluency Framework & Foundations", issuer: "Anthropic", date: "Apr 2026" },
+        { name: "Introduction to subagents", issuer: "Anthropic", date: "Apr 2026" },
+        { name: "Introduction to agent skills", issuer: "Anthropic", date: "Apr 2026" }
+    ]
 };
