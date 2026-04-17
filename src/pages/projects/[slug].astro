@@ -13,11 +13,33 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+const siteUrl = "https://dev-joshi.pages.dev";
+const slug = project.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+const projectUrl = `${siteUrl}/projects/${slug}`;
+
+// Trim description to max 155 chars at a natural boundary
+const metaDescription = project.description.length > 155
+  ? project.description.substring(0, project.description.lastIndexOf(' ', 152)) + '.'
+  : project.description;
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Projects", "item": `${siteUrl}/#projects` },
+    { "@type": "ListItem", "position": 3, "name": project.name, "item": projectUrl }
+  ]
+};
 ---
 
 <Layout
   title={`${project.name} — DevOps Case Study | Dev Joshi`}
-  description={`${project.description.substring(0, 155)}...`}
+  description={metaDescription}
+  keywords={project.tags.join(", ")}
+  jsonLd={breadcrumbSchema}
 >
   <Navbar />
   <main class="pt-32 pb-32 bg-editorial-surface dark:bg-editorial-surface-dark min-h-screen transition-colors duration-500">
@@ -101,11 +123,7 @@ const { project } = Astro.props;
                     )) || <p class="text-editorial-secondary dark:text-editorial-secondary-dark font-mono text-xs uppercase tracking-widest">Awaiting Metric Verification...</p>}
                 </div>
 
-                <div class="mt-16 pt-12 border-t border-editorial-surface-highest/20 dark:border-editorial-surface-highest-dark/20">
-                    <p class="text-[9px] font-mono uppercase tracking-[0.3em] text-editorial-secondary dark:text-editorial-secondary-dark italic">
-                        Technical Report No. {Math.floor(Math.random() * 9000) + 1000}
-                    </p>
-                </div>
+
             </div>
         </div>
       </div>
