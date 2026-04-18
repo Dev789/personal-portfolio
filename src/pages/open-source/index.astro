@@ -139,23 +139,15 @@ const projects = [
 
 <style>
   .os-card {
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    transform: scale(1);
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease, border-color 0.3s ease;
   }
   
   .os-card.hidden-card {
     opacity: 0;
-    transform: translateY(10px);
+    transform: scale(0.98);
     pointer-events: none;
-    position: absolute;
-    visibility: hidden;
-  }
-
-  #os-grid {
-    position: relative;
-    display: grid;
-    /* Maintain grid layout even with hidden absolute elements */
   }
 </style>
 
@@ -179,18 +171,21 @@ const projects = [
         // Filter cards with animation
         cards.forEach(card => {
           const category = (card as HTMLElement).dataset.category;
-          if (filterValue === 'all' || category === filterValue) {
+          const isMatch = filterValue === 'all' || category === filterValue;
+          
+          if (isMatch) {
+            (card as HTMLElement).style.display = 'flex';
+            // Trigger reflow for animation
+            void (card as HTMLElement).offsetWidth;
             (card as HTMLElement).classList.remove('hidden-card');
-            (card as HTMLElement).style.position = 'relative';
-            (card as HTMLElement).style.visibility = 'visible';
           } else {
             (card as HTMLElement).classList.add('hidden-card');
-            // Timeout to allow animation before hiding fully
+            // Wait for transition before hiding to prevent layout jump
             setTimeout(() => {
               if ((card as HTMLElement).classList.contains('hidden-card')) {
-                (card as HTMLElement).style.position = 'absolute';
+                (card as HTMLElement).style.display = 'none';
               }
-            }, 400);
+            }, 300);
           }
         });
       });
@@ -198,7 +193,6 @@ const projects = [
   }
 
   setupOSFilters();
-  // Support Astro view transitions
   document.addEventListener('astro:after-swap', setupOSFilters);
 </script>
 
