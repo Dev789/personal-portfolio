@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
+import OpenSource from '../components/OpenSource.astro';
 import Skills from '../components/Skills.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
@@ -95,7 +96,7 @@ const websiteSchema = {
 
 <Layout
 	title={`${resume.basics.name} | DevOps Engineer — Cloud, Kubernetes & CI/CD`}
-	description="Dev Joshi — DevOps Engineer building scalable cloud infrastructure on AWS, GCP & Azure. Kubernetes, Terraform, CI/CD & SOC 2 expert."
+	description="Dev Joshi — DevOps Engineer based in Ahmedabad, Gujarat, India, building scalable cloud infrastructure on AWS, GCP & Azure. Kubernetes, Terraform, CI/CD & SOC 2 expert."
 	jsonLd={[personSchema, faqSchema, websiteSchema]}
 >
 	<Navbar />
@@ -105,6 +106,7 @@ const websiteSchema = {
 		<Experience />
 		<Certifications />
 		<Projects />
+		<OpenSource />
         <Testimonials />
         <FAQ />
         <CLI />
