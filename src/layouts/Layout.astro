@@ -139,6 +139,12 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     .lenis.lenis-scrolling iframe {
         pointer-events: none;
     }
+    
+    html.is-transitioning *,
+    html.is-transitioning *::before,
+    html.is-transitioning *::after {
+        transition: none !important;
+    }
 
 	body {
         transition: background-color 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -147,8 +153,8 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     /* Smooth theme transition for all elements */
     *, *::before, *::after {
         transition-property: background-color, border-color, color, fill, stroke;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        transition-duration: 500ms;
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        transition-duration: 300ms;
     }
 
 	/* Custom Scrollbar */

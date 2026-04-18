@@ -8,7 +8,7 @@ const isHome = pathname === '/';
 
 <footer class="bg-editorial-text dark:bg-editorial-surface-highest-dark pt-24 pb-12 transition-colors duration-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row justify-between gap-24 mb-16">
+    <div class="flex flex-col lg:flex-row justify-between gap-24">
       
       <!-- Brand Column -->
       <div class="lg:w-1/2 space-y-8">
@@ -41,6 +41,7 @@ const isHome = pathname === '/';
                 <li><a href={isHome ? "#about" : "/#about"} class="text-editorial-surface-highest dark:text-editorial-secondary-dark hover:text-editorial-primary dark:hover:text-editorial-primary-dark transition-colors">/ Background</a></li>
                 <li><a href={isHome ? "#projects" : "/#projects"} class="text-editorial-surface-highest dark:text-editorial-secondary-dark hover:text-editorial-primary dark:hover:text-editorial-primary-dark transition-colors">/ Project Archives</a></li>
                 <li><a href={isHome ? "#stack" : "/#stack"} class="text-editorial-surface-highest dark:text-editorial-secondary-dark hover:text-editorial-primary dark:hover:text-editorial-primary-dark transition-colors">/ Technical Stack</a></li>
+                <li><a href="/open-source" class="text-editorial-surface-highest dark:text-editorial-secondary-dark hover:text-editorial-primary dark:hover:text-editorial-primary-dark transition-colors">/ Open Source</a></li>
                 <li><a href="mailto:joshid647@gmail.com" class="text-editorial-surface-highest dark:text-editorial-secondary-dark hover:text-editorial-primary dark:hover:text-editorial-primary-dark transition-colors">/ Inquiries</a></li>
             </ul>
           </div>
@@ -57,15 +58,5 @@ const isHome = pathname === '/';
       </div>
     </div>
 
-    <div class="pt-12 border-t border-editorial-surface-low dark:border-editorial-surface-low-dark flex flex-col md:flex-row justify-between items-center gap-8">
-        <p class="text-editorial-surface-highest dark:text-editorial-secondary-dark font-mono text-[9px] uppercase tracking-[0.2em] opacity-40">
-            &copy; {currentYear} Technical Monograph No. 01 — {resume.basics.name}
-        </p>
-        <div class="flex items-center gap-4 text-editorial-surface-highest dark:text-editorial-secondary-dark font-mono text-[9px] uppercase tracking-[0.2em] opacity-40">
-            <span>Edition v3.0</span>
-            <span class="w-8 h-[1px] bg-editorial-surface-low dark:bg-editorial-surface-low-dark"></span>
-            <span>Astro / Tailwind / Editorial DevOps</span>
-        </div>
-    </div>
   </div>
 </footer>
