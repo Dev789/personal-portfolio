@@ -6,7 +6,7 @@ const navItems = [
   { name: 'About', href: isHome ? '#about' : '/#about' },
   { name: 'Stack', href: isHome ? '#stack' : '/#stack' },
   { name: 'Projects', href: isHome ? '#projects' : '/#projects' },
-  { name: 'Open Source', href: isHome ? '#open-source' : '/#open-source' },
+  { name: 'Open Source', href: '/open-source' },
   { name: 'Blogs', href: '/blog' },
   { name: 'CLI', href: isHome ? '#cli' : '/#cli' },
 ];
@@ -291,6 +291,13 @@ const navItems = [
   if (btn && menu) {
     btn.addEventListener('click', () => {
       menu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking a link
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
     });
   }
 </script>
