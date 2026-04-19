@@ -301,6 +301,13 @@ export const resume = {
           description: "Production-ready scaffolding for building agentic AI applications with a robust FastAPI backend and an interactive React frontend.",
           tags: ["Python", "FastAPI", "React"],
           github: "https://github.com/dev-joshi-ops/fastapi-react-agentic-scaffold"
+        },
+        {
+          name: "liferay-docker",
+          category: "Infrastructure",
+          description: "Production-ready Docker configurations for Liferay DXP, including optimized JVM settings, clustering support, and multi-version database orchestration.",
+          tags: ["Docker", "Liferay", "DevOps"],
+          github: "https://github.com/dev-joshi-ops/liferay-docker"
         }
       ]
 };
