@@ -11,14 +11,15 @@ export default {
                 },
                 primary: '#0EA5E9', // Sky 500
                 editorial: {
-                    surface: '#fcf9f8',
-                    text: '#323232',
-                    primary: '#4d44e3',
+                    surface: '#f0ece4',
+                    text: '#000000',
+                    primary: '#20b6d0',
                     secondary: '#585f6d',
-                    'surface-low': '#f6f3f2',
-                    'surface-container': '#f0eded',
-                    'surface-highest': '#e4e2e2',
+                    'surface-low': '#e8e4dc',
+                    'surface-container': '#e0dcd4',
+                    'surface-highest': '#d8d4cc',
                     outline: '#7b7a7a',
+                    selection: '#df492f',
                     // Dark Mode (Inverted Monograph)
                     'surface-dark': '#0f0f0f',
                     'text-dark': '#efefef',

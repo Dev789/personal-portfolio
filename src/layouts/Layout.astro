@@ -1,4 +1,5 @@
 ---
+import Cursor from '../components/Cursor.astro';
 interface Props {
 	title: string;
 	description?: string;
@@ -73,6 +74,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
             }
         </script>
         <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
         <script is:inline>
             document.addEventListener('DOMContentLoaded', () => {
                 const lenis = new Lenis({
@@ -103,8 +105,9 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
             });
         </script>
 	</head>
-	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-primary selection:text-white dark:selection:bg-editorial-primary-dark">
-		<slot />
+	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-selection selection:text-white dark:selection:bg-editorial-primary-dark cursor-none">
+        <Cursor />
+        <slot />
 	</body>
 </html>
 
@@ -181,9 +184,14 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
         background: #2d2d2d;
     }
 	::-webkit-scrollbar-thumb:hover {
-		background: #4d44e3;
+		background: #20b6d0;
 	}
     :global(.dark) ::-webkit-scrollbar-thumb:hover {
         background: #7c73ff;
+    }
+
+    /* Hide cursor on interactive elements as we use a custom one */
+    a, button, [role="button"], input, textarea, select {
+        cursor: none !important;
     }
 </style>
