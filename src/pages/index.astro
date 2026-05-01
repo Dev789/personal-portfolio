@@ -23,7 +23,7 @@ const personSchema = {
 	"jobTitle": "DevOps Engineer",
 	"url": siteUrl,
 	"image": `${siteUrl}/images/hero-devops.png`,
-	"email": "mailto:joshid647@gmail.com",
+	"email": "https://calendly.com/joshid647/30min",
 	"address": {
 		"@type": "PostalAddress",
 		"addressLocality": "Ahmedabad",
@@ -87,7 +87,7 @@ const faqSchema = {
 const websiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
-	"name": "Dev Joshi — DevOps Portfolio",
+	"name": "Dev Joshi | DevOps Portfolio",
 	"url": siteUrl,
 	"description": "DevOps Engineer portfolio showcasing cloud infrastructure, Kubernetes, CI/CD pipelines, and scalable automation projects.",
 	"author": { "@type": "Person", "name": "Dev Joshi" }
@@ -95,8 +95,8 @@ const websiteSchema = {
 ---
 
 <Layout
-	title={`${resume.basics.name} | DevOps Engineer — Cloud, Kubernetes & CI/CD`}
-	description="Dev Joshi — DevOps Engineer based in Ahmedabad, Gujarat, India, building scalable cloud infrastructure on AWS, GCP & Azure. Kubernetes, Terraform, CI/CD & SOC 2 expert."
+	title={`${resume.basics.name} | DevOps Engineer | Cloud, Kubernetes & CI/CD`}
+	description="Dev Joshi | DevOps Engineer based in Ahmedabad, Gujarat, India, building scalable cloud infrastructure on AWS, GCP & Azure. Kubernetes, Terraform, CI/CD & SOC 2 expert."
 	jsonLd={[personSchema, faqSchema, websiteSchema]}
 >
 	<Navbar />

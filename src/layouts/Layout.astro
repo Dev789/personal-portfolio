@@ -1,4 +1,5 @@
 ---
+import Cursor from '../components/Cursor.astro';
 interface Props {
 	title: string;
 	description?: string;
@@ -11,7 +12,7 @@ interface Props {
 
 const {
 	title,
-	description = "Dev Joshi — DevOps Engineer. Cloud infrastructure, Kubernetes, CI/CD & automation specialist. Available for consulting.",
+	description = "Dev Joshi | DevOps Engineer. Cloud infrastructure, Kubernetes, CI/CD & automation specialist. Available for consulting.",
 	canonicalUrl,
 	ogImage = "/images/hero-devops.png",
 	ogType = "website",
@@ -49,7 +50,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={fullOgImage} />
 		<meta property="og:url" content={currentUrl} />
-		<meta property="og:site_name" content="Dev Joshi — DevOps Portfolio" />
+		<meta property="og:site_name" content="Dev Joshi | DevOps Portfolio" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -64,6 +65,9 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
         {/* Preload critical fonts */}
         <link rel="preload" href="/fonts/JetBrainsMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
         <script is:inline>
+            window.__loaderStart = Date.now();
+        </script>
+        <script is:inline>
             // Check for saved theme preference or system preference
             // Note: For Editorial DevOps, we default to Light mode as per design system focus
             if (localStorage.theme === 'dark') {
@@ -73,6 +77,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
             }
         </script>
         <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
         <script is:inline>
             document.addEventListener('DOMContentLoaded', () => {
                 const lenis = new Lenis({
@@ -102,9 +107,326 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
                 });
             });
         </script>
+        <style is:inline>
+            /* Critical Loader Styles to prevent FOUC */
+            #app-loader {
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                display: grid;
+                place-items: center;
+                background: #f0ece6; /* Fallback for light mode */
+                transition: opacity 0.3s ease;
+            }
+            .dark #app-loader {
+                background: #0f0f0f;
+            }
+            #app-loader[aria-hidden="true"] {
+                display: grid !important;
+            }
+        </style>
 	</head>
-	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-primary selection:text-white dark:selection:bg-editorial-primary-dark">
-		<slot />
+	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-selection selection:text-white dark:selection:bg-editorial-primary-dark cursor-none" style="overflow: hidden;">
+        <div id="app-loader" aria-hidden="true">
+            <div class="loader-shell">
+                <svg
+                    class="loader-graphic"
+                    width="220"
+                    height="110"
+                    viewBox="0 0 200 100"
+                >
+                    <g
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-width="0.3"
+                        stroke-dasharray="100 100"
+                        pathLength="100"
+                        marker-start="url(#cpu-circle-marker)"
+                    >
+                        <path
+                            stroke-dasharray="100 100"
+                            pathLength="100"
+                            d="M 10 20 h 79.5 q 5 0 5 5 v 30"
+                        />
+                        <path
+                            stroke-dasharray="100 100"
+                            pathLength="100"
+                            d="M 180 10 h -69.7 q -5 0 -5 5 v 30"
+                        />
+                        <path d="M 130 20 v 21.8 q 0 5 -5 5 h -10" />
+                        <path d="M 170 80 v -21.8 q 0 -5 -5 -5 h -50" />
+                        <path
+                            stroke-dasharray="100 100"
+                            pathLength="100"
+                            d="M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -20"
+                        />
+                        <path d="M 94.8 95 v -36" />
+                        <path d="M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 14" />
+                        <path d="M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 20" />
+                        <animate
+                            attributeName="stroke-dashoffset"
+                            from="100"
+                            to="0"
+                            dur="1s"
+                            fill="freeze"
+                            calcMode="spline"
+                            keySplines="0.25,0.1,0.5,1"
+                            keyTimes="0; 1"
+                        />
+                    </g>
+
+                    <g mask="url(#cpu-mask-1)">
+                        <circle class="cpu-architecture cpu-line-1" cx="0" cy="0" r="8" fill="url(#cpu-blue-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-2)">
+                        <circle class="cpu-architecture cpu-line-2" cx="0" cy="0" r="8" fill="url(#cpu-yellow-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-3)">
+                        <circle class="cpu-architecture cpu-line-3" cx="0" cy="0" r="8" fill="url(#cpu-pinkish-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-4)">
+                        <circle class="cpu-architecture cpu-line-4" cx="0" cy="0" r="8" fill="url(#cpu-white-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-5)">
+                        <circle class="cpu-architecture cpu-line-5" cx="0" cy="0" r="8" fill="url(#cpu-green-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-6)">
+                        <circle class="cpu-architecture cpu-line-6" cx="0" cy="0" r="8" fill="url(#cpu-orange-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-7)">
+                        <circle class="cpu-architecture cpu-line-7" cx="0" cy="0" r="8" fill="url(#cpu-cyan-grad)" />
+                    </g>
+                    <g mask="url(#cpu-mask-8)">
+                        <circle class="cpu-architecture cpu-line-8" cx="0" cy="0" r="8" fill="url(#cpu-rose-grad)" />
+                    </g>
+                    <g>
+                        <g fill="url(#cpu-connection-gradient)">
+                            <rect x="93" y="37" width="2.5" height="5" rx="0.7" />
+                            <rect x="104" y="37" width="2.5" height="5" rx="0.7" />
+                            <rect
+                                x="116.3"
+                                y="44"
+                                width="2.5"
+                                height="5"
+                                rx="0.7"
+                                transform="rotate(90 116.25 45.5)"
+                            />
+                            <rect
+                                x="122.8"
+                                y="44"
+                                width="2.5"
+                                height="5"
+                                rx="0.7"
+                                transform="rotate(90 116.25 45.5)"
+                            />
+                            <rect
+                                x="104"
+                                y="16"
+                                width="2.5"
+                                height="5"
+                                rx="0.7"
+                                transform="rotate(180 105.25 39.5)"
+                            />
+                            <rect
+                                x="114.5"
+                                y="16"
+                                width="2.5"
+                                height="5"
+                                rx="0.7"
+                                transform="rotate(180 105.25 39.5)"
+                            />
+                            <rect
+                                x="80"
+                                y="-13.6"
+                                width="2.5"
+                                height="5"
+                                rx="0.7"
+                                transform="rotate(270 115.25 19.5)"
+                            />
+                            <rect
+                                x="87"
+                                y="-13.6"
+                                width="2.5"
+                                height="5"
+                                rx="0.7"
+                                transform="rotate(270 115.25 19.5)"
+                            />
+                        </g>
+                        <rect
+                            x="85"
+                            y="40"
+                            width="30"
+                            height="20"
+                            rx="2"
+                            fill="#181818"
+                            filter="url(#cpu-light-shadow)"
+                        />
+                        <text
+                            x="92"
+                            y="52.5"
+                            font-size="7"
+                            fill="url(#cpu-text-gradient)"
+                            font-weight="600"
+                            letter-spacing="0.05em"
+                        >
+                            CPU
+                        </text>
+                    </g>
+                    <defs>
+                        <mask id="cpu-mask-1">
+                            <path d="M 10 20 h 79.5 q 5 0 5 5 v 24" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-2">
+                            <path d="M 180 10 h -69.7 q -5 0 -5 5 v 24" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-3">
+                            <path d="M 130 20 v 21.8 q 0 5 -5 5 h -10" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-4">
+                            <path d="M 170 80 v -21.8 q 0 -5 -5 -5 h -50" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-5">
+                            <path d="M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -20" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-6">
+                            <path d="M 94.8 95 v -36" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-7">
+                            <path d="M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 14" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <mask id="cpu-mask-8">
+                            <path d="M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 20" stroke-width="0.5" stroke="white" />
+                        </mask>
+                        <radialGradient id="cpu-blue-grad" fx="1">
+                            <stop offset="0%" stop-color="#00E8ED" />
+                            <stop offset="50%" stop-color="#08F" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-yellow-grad" fx="1">
+                            <stop offset="0%" stop-color="#FFD800" />
+                            <stop offset="50%" stop-color="#FFD800" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-pinkish-grad" fx="1">
+                            <stop offset="0%" stop-color="#830CD1" />
+                            <stop offset="50%" stop-color="#FF008B" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-white-grad" fx="1">
+                            <stop offset="0%" stop-color="white" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-green-grad" fx="1">
+                            <stop offset="0%" stop-color="#22c55e" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-orange-grad" fx="1">
+                            <stop offset="0%" stop-color="#f97316" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-cyan-grad" fx="1">
+                            <stop offset="0%" stop-color="#06b6d4" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <radialGradient id="cpu-rose-grad" fx="1">
+                            <stop offset="0%" stop-color="#f43f5e" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                        <filter id="cpu-light-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow
+                                dx="1.5"
+                                dy="1.5"
+                                stdDeviation="1"
+                                flood-color="black"
+                                flood-opacity="0.1"
+                            />
+                        </filter>
+                        <marker
+                            id="cpu-circle-marker"
+                            viewBox="0 0 10 10"
+                            refX="5"
+                            refY="5"
+                            markerWidth="18"
+                            markerHeight="18"
+                        >
+                            <circle id="innerMarkerCircle" cx="5" cy="5" r="2" fill="black" stroke="#232323" stroke-width="0.5">
+                                <animate attributeName="r" values="0; 3; 2" dur="0.5s" />
+                            </circle>
+                        </marker>
+                        <linearGradient id="cpu-connection-gradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#4F4F4F" />
+                            <stop offset="60%" stop-color="#121214" />
+                        </linearGradient>
+                        <linearGradient id="cpu-text-gradient" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#666666">
+                                <animate
+                                    attributeName="offset"
+                                    values="-2; -1; 0"
+                                    dur="5s"
+                                    repeatCount="indefinite"
+                                    calcMode="spline"
+                                    keyTimes="0; 0.5; 1"
+                                    keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+                                />
+                            </stop>
+                            <stop offset="25%" stop-color="white">
+                                <animate
+                                    attributeName="offset"
+                                    values="-1; 0; 1"
+                                    dur="5s"
+                                    repeatCount="indefinite"
+                                    calcMode="spline"
+                                    keyTimes="0; 0.5; 1"
+                                    keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+                                />
+                            </stop>
+                            <stop offset="50%" stop-color="#666666">
+                                <animate
+                                    attributeName="offset"
+                                    values="0; 1; 2;"
+                                    dur="5s"
+                                    repeatCount="indefinite"
+                                    calcMode="spline"
+                                    keyTimes="0; 0.5; 1"
+                                    keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+                                />
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <p class="loader-label">Booting portfolio</p>
+            </div>
+        </div>
+        <Cursor />
+        <slot />
+        <script>
+            import { gsap } from 'gsap';
+
+            const removeLoader = () => {
+                const loader = document.getElementById('app-loader');
+                if (!loader) return;
+
+                const elapsed = Date.now() - (window.__loaderStart || Date.now());
+                const delay = Math.max(0, 1000 - elapsed) / 1000;
+
+                gsap.to(loader, {
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: delay,
+                    ease: 'power2.inOut',
+                    onComplete: () => {
+                        loader.remove();
+                        document.body.style.overflow = '';
+                    }
+                });
+            };
+
+            if (document.readyState === 'complete') {
+                removeLoader();
+            } else {
+                window.addEventListener('load', removeLoader, { once: true });
+            }
+        </script>
 	</body>
 </html>
 
@@ -181,9 +503,131 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
         background: #2d2d2d;
     }
 	::-webkit-scrollbar-thumb:hover {
-		background: #4d44e3;
+		background: #df492f;
 	}
     :global(.dark) ::-webkit-scrollbar-thumb:hover {
-        background: #7c73ff;
+        background: #df492f;
+    }
+
+    /* Hide cursor on interactive elements as we use a custom one */
+    a, button, [role="button"], input, textarea, select {
+        cursor: none !important;
+    }
+
+    #app-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        background:
+            radial-gradient(circle at top, rgba(223, 73, 47, 0.16), transparent 45%),
+            rgba(240, 236, 228, 0.96);
+        backdrop-filter: blur(10px);
+        transition: opacity 300ms ease, visibility 300ms ease;
+    }
+
+    :global(.dark) #app-loader {
+        background:
+            radial-gradient(circle at top, rgba(223, 73, 47, 0.14), transparent 45%),
+            rgba(15, 15, 15, 0.94);
+    }
+
+    #app-loader.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .loader-shell {
+        display: grid;
+        gap: 0.75rem;
+        justify-items: center;
+        color: #585f6d;
+    }
+
+    :global(.dark) .loader-shell {
+        color: #a1a1a1;
+    }
+
+    .loader-graphic {
+        width: min(18rem, 72vw);
+        height: auto;
+    }
+
+    .loader-label {
+        margin: 0;
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #df492f;
+    }
+
+    .cpu-architecture {
+        offset-anchor: 10px 0px;
+        animation: animation-path;
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
+    }
+
+    .cpu-line-1 {
+        offset-path: path("M 10 20 h 79.5 q 5 0 5 5 v 30");
+        animation-duration: 5s;
+        animation-delay: 1s;
+    }
+
+    .cpu-line-2 {
+        offset-path: path("M 180 10 h -69.7 q -5 0 -5 5 v 40");
+        animation-delay: 6s;
+        animation-duration: 2s;
+    }
+
+    .cpu-line-3 {
+        offset-path: path("M 130 20 v 21.8 q 0 5 -5 5 h -25");
+        animation-delay: 4s;
+        animation-duration: 6s;
+    }
+
+    .cpu-line-4 {
+        offset-path: path("M 170 80 v -21.8 q 0 -5 -5 -5 h -65");
+        animation-delay: 3s;
+        animation-duration: 3s;
+    }
+
+    .cpu-line-5 {
+        offset-path: path(
+            "M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -35"
+        );
+        animation-delay: 9s;
+        animation-duration: 4s;
+    }
+
+    .cpu-line-6 {
+        offset-path: path("M 94.8 95 v -46");
+        animation-delay: 3s;
+        animation-duration: 7s;
+    }
+
+    .cpu-line-7 {
+        offset-path: path(
+            "M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 28"
+        );
+        animation-delay: 4s;
+        animation-duration: 4s;
+    }
+
+    .cpu-line-8 {
+        offset-path: path("M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 35");
+        animation-delay: 3s;
+        animation-duration: 3s;
+    }
+
+    @keyframes animation-path {
+        0% {
+            offset-distance: 0%;
+        }
+        100% {
+            offset-distance: 100%;
+        }
     }
 </style>
