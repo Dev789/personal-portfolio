@@ -16,7 +16,7 @@ import { resume } from '../data/resume';
           <!-- Metadata (4 cols) -->
           <div class="lg:col-span-4 space-y-4">
             <div class="font-mono text-xs uppercase tracking-[0.2em] text-editorial-primary dark:text-editorial-primary-dark font-bold">
-              <time datetime={job.startDate}>{job.startDate}</time> — <time datetime={job.endDate === 'Present' ? new Date().getFullYear().toString() : job.endDate}>{job.endDate}</time>
+              <time datetime={job.startDate}>{job.startDate}</time> - <time datetime={job.endDate === 'Present' ? new Date().getFullYear().toString() : job.endDate}>{job.endDate}</time>
             </div>
             <p class=" text-2xl font-bold text-editorial-text dark:text-editorial-text-dark">{job.company}</p>
             <p class="font-mono text-[10px] uppercase tracking-widest text-editorial-secondary dark:text-editorial-secondary-dark">Ahmedabad</p>

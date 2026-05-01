@@ -219,7 +219,7 @@ The benefit of setting up a write rule is that:
 
 For messy, bulk or dynamic queries, Application-level sharding is generally safer.
 
-### Step 4: The Missing Link — Data is not present in any shards
+### Step 4: The Missing Link : Data is not present in any shards
 
 We configured ProxySQL but we haven’t actually created any data on the actual MySQL containers yet. Let’s try to setup the actual database containers with data:
 

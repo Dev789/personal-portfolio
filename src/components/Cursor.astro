@@ -1,0 +1,78 @@
+<div class="custom-cursor">
+  <svg
+    id="cursorSvg"
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- The CIRCLE (default state) -->
+    <path
+      id="cursorDot"
+      d="M32 14
+         C41.388 14 49 21.611 49 31
+         C49 40.389 41.388 48 32 48
+         C22.612 48 15 40.389 15 31
+         C15 21.611 22.612 14 32 14 Z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const cursorWrap = document.querySelector<HTMLElement>('.custom-cursor')!;
+  const dot        = document.getElementById('cursorDot') as unknown as SVGPathElement;
+
+  if (cursorWrap && dot) {
+    // Initial State
+    gsap.set(cursorWrap, { xPercent: -50, yPercent: -50, autoAlpha: 0 });
+    gsap.set(dot, { autoAlpha: 1, scale: 1 });
+
+    const xTo = gsap.quickTo(cursorWrap, 'x', { duration: 0.2, ease: 'power3' });
+    const yTo = gsap.quickTo(cursorWrap, 'y', { duration: 0.2, ease: 'power3' });
+
+    let hasMoved = false;
+    window.addEventListener('mousemove', (e) => {
+      if (!hasMoved) {
+        gsap.to(cursorWrap, { autoAlpha: 1, duration: 0.3 });
+        hasMoved = true;
+      }
+      xTo(e.clientX);
+      yTo(e.clientY);
+    });
+  }
+</script>
+
+<style>
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    pointer-events: none;
+    color: #df492f;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .custom-cursor svg {
+    overflow: visible;
+    width: 64px;
+    height: 64px;
+  }
+
+  #cursorDot {
+    transform-origin: center center;
+  }
+
+  @media (hover: none) {
+    .custom-cursor { display: none !important; }
+  }
+</style>
