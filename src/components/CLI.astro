@@ -3,7 +3,7 @@ import { resume } from '../data/resume';
 ---
 
 <section id="cli" class="py-12 bg-editorial-surface dark:bg-editorial-surface-dark border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="w-full px-[clamp(1rem,5vw,7rem)]">
     <div class="text-left mb-10">
         <h2 class="text-4xl md:text-6xl font-bold text-editorial-text dark:text-editorial-text-dark tracking-tight    border-l-4 border-editorial-primary dark:border-editorial-primary-dark pl-8">Interactive Terminal</h2>
         <p class="text-editorial-secondary dark:text-editorial-secondary-dark text-lg  font-light mt-6">Get to know me via CLI. Type <code class="bg-editorial-surface-highest dark:bg-editorial-surface-highest-dark px-2 py-0.5 text-editorial-primary dark:text-editorial-primary-dark font-mono text-sm">help</code> to start.</p>
@@ -21,7 +21,7 @@ import { resume } from '../data/resume';
       </div>
 
       <!-- Terminal Body -->
-      <div class="p-4 sm:p-8 h-[360px] sm:h-[450px] overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-[#444] scrollbar-track-transparent" id="terminal-container" onclick="document.getElementById('terminal-input').focus()">
+      <div class="p-[clamp(1rem,3vw,2rem)] min-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-[#444] scrollbar-track-transparent" id="terminal-container" onclick="document.getElementById('terminal-input').focus()">
         <div id="terminal-output" class="mb-2">
           <div class="mb-6 text-slate-400">
             <span class="text-editorial-primary dark:text-editorial-primary-dark">➜</span> <span class="text-editorial-primary dark:text-editorial-primary-dark font-bold">~</span> <span class="opacity-60"># Technical Monograph CLI Protocol Loaded</span><br/>
