@@ -2,37 +2,37 @@
 import { resume } from '../data/resume';
 ---
 
-<section id="about" class="pt-32 bg-editorial-surface dark:bg-editorial-surface-dark pb-12">
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div class="flex flex-col lg:flex-row justify-between items-start gap-0">
+<section id="about" class="pt-[clamp(8rem,11vw,12rem)] bg-editorial-surface dark:bg-editorial-surface-dark pb-[clamp(3rem,6vw,5rem)]">
+  <div class="w-full px-[clamp(1rem,5vw,7rem)]">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.34fr)] items-start lg:items-center gap-[clamp(3rem,6vw,7rem)]">
       
       <!-- Left Column: Text (max-w-3xl) -->
-      <div class="lg:max-w-3xl space-y-10">
+      <div class="space-y-[clamp(2rem,4vw,2.75rem)]">
 
 
         <!-- Headline -->
-        <h1 class="text-[54px] md:text-[90px] font-bold text-editorial-text dark:text-editorial-text-dark tracking-tighter leading-[1.1] " fetchpriority="high">
+        <h1 class="text-[clamp(3.35rem,7vw,7rem)] font-bold text-editorial-text dark:text-editorial-text-dark tracking-tighter leading-[1.02]" fetchpriority="high">
           Zero to <span class="text-editorial-primary dark:text-editorial-primary-dark">Cloud.</span> <br />
           Done Right.
         </h1>
         
         <!-- Subheading -->
-        <p class="text-[20px] md:text-[26px] text-editorial-secondary dark:text-editorial-secondary-dark font-mono font-medium tracking-tight max-w-2xl leading-relaxed">
+        <p class="text-[clamp(1.25rem,1.5vw,1.625rem)] text-editorial-secondary dark:text-editorial-secondary-dark font-mono font-medium tracking-tight max-w-[68ch] leading-relaxed">
           Production-grade infra. Built from scratch. Delivered on time.
         </p>
  
         <!-- Buttons -->
-        <div class="flex flex-wrap gap-4 pt-4">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
           <a 
             href="#projects"
-            class="w-56 py-4 bg-editorial-primary dark:bg-editorial-primary-dark text-white dark:text-editorial-surface-dark font-mono text-[12px] font-bold hover:opacity-90 transition-all text-center"
+            class="w-full sm:w-auto px-8 py-4 bg-editorial-primary dark:bg-editorial-primary-dark text-white dark:text-editorial-surface-dark font-mono text-[12px] font-bold hover:opacity-90 transition-all text-center"
           >
             View Work
           </a>
           <a 
             href={resume.basics.url || "#"}
             download="Dev_Joshi_Resume.pdf"
-            class="w-56 py-4 border border-editorial-surface-highest dark:border-editorial-surface-highest-dark bg-white dark:bg-transparent text-editorial-text dark:text-editorial-text-dark font-mono text-[12px] font-bold hover:bg-editorial-surface-low dark:hover:bg-editorial-surface-low-dark transition-all text-center"
+            class="w-full sm:w-auto px-8 py-4 border border-editorial-surface-highest dark:border-editorial-surface-highest-dark bg-white dark:bg-transparent text-editorial-text dark:text-editorial-text-dark font-mono text-[12px] font-bold hover:bg-editorial-surface-low dark:hover:bg-editorial-surface-low-dark transition-all text-center"
           >
             Download CV
           </a>
@@ -40,8 +40,8 @@ import { resume } from '../data/resume';
       </div>
 
       <!-- Right Column: Tools List -->
-      <div class="pt-20 hidden lg:flex flex-col items-end">
-        <ul class="space-y-12 font-mono text-[15px] font-medium text-[#777] dark:text-editorial-secondary-dark border-l border-[#eee] dark:border-white/5 pl-12 py-4 w-fit mr-0">
+      <div class="hidden lg:flex justify-end">
+        <ul class="space-y-12 font-mono text-[15px] font-medium text-[#777] dark:text-editorial-secondary-dark border-l border-[#eee] dark:border-white/5 pl-12 py-4 w-fit">
           <li class="flex items-center gap-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#999] dark:text-editorial-outline"><path d="M17.5 19c.7 0 1.2-.6 1.2-1.3l-.2-6.5c0-.4-.2-.8-.6-1L12.7 7.4c-.4-.2-.9-.2-1.3 0l-5.2 2.8c-.4.2-.6.6-.6 1 l-.2 6.5c0 .7.5 1.3 1.2 1.3h11z"/></svg>
             Amazon Web Services
@@ -63,11 +63,11 @@ import { resume } from '../data/resume';
     </div>
 
     <!-- Intro Section (from screenshot bottom) -->
-    <div class="mt-12 pt-10 border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <div class="text-[28px] md:text-[38px] font-bold text-editorial-text dark:text-editorial-text-dark   leading-tight tracking-tight">
+    <div class="mt-[clamp(4rem,7vw,7rem)] pt-10 border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] gap-[clamp(3rem,6vw,6rem)]">
+      <div class="text-[clamp(1.75rem,2.8vw,2.75rem)] font-bold text-editorial-text dark:text-editorial-text-dark leading-tight tracking-tight">
         Most teams get DevOps half-built. Pipelines that break, infra nobody owns, compliance gaps that surface at the worst time.
       </div>
-      <div class="space-y-8 text-[17px] md:text-[19px] text-editorial-secondary dark:text-editorial-secondary-dark  font-light leading-relaxed">
+      <div class="space-y-8 text-[clamp(1.0625rem,1.25vw,1.25rem)] text-editorial-secondary dark:text-editorial-secondary-dark font-light leading-relaxed">
         <p>
           I come in, architect it properly, and ship it. Whether it's a greenfield cloud setup or a high-stakes government migration under compliance deadlines, I've delivered both.
         </p>

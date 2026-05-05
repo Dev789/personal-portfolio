@@ -6,7 +6,7 @@ posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontma
 ---
 
 <section id="blog" class="py-20 bg-editorial-surface dark:bg-editorial-surface-dark border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark transition-colors duration-500">
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="w-full px-[clamp(1rem,5vw,7rem)]">
     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-12">
       <div class="max-w-2xl">
         <h2 class="text-4xl md:text-6xl font-bold text-editorial-text dark:text-editorial-text-dark mb-6 tracking-tight   border-l-4 border-editorial-primary dark:border-editorial-primary-dark pl-8">Latest Articles</h2>
@@ -23,13 +23,16 @@ posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontma
       {posts.map((post) => (
         <article class="group bg-editorial-surface dark:bg-editorial-surface-dark border-r border-b border-editorial-surface-highest dark:border-editorial-surface-highest-dark hover:bg-editorial-surface-low dark:hover:bg-editorial-surface-low-dark transition-all duration-500 flex flex-col h-full">
           <!-- Image Container -->
-          <div class="relative h-64 overflow-hidden border-b border-editorial-surface-highest dark:border-editorial-surface-highest-dark">
+          <div class="relative aspect-[16/9] overflow-hidden border-b border-editorial-surface-highest dark:border-editorial-surface-highest-dark">
             <div class="absolute inset-0 bg-editorial-text/5 group-hover:bg-transparent transition-colors z-10"></div>
             {post.frontmatter.image ? (
                 <img 
                 src={post.frontmatter.image} 
                 alt={`Cover image for article: ${post.frontmatter.title}`} 
                 loading="lazy"
+                width="800"
+                height="450"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                 />
             ) : (

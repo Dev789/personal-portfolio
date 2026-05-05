@@ -93,6 +93,7 @@ export const resume = {
     projects: [
         {
             name: "Enterprise Intranet: On-Premises Liferay DXP Migration",
+            slug: "enterprise-intranet-on-premises-liferay-dxp-migration",
             description: "Orchestrated a high-stakes Government IT Modernization project, migrating a mission-critical Enterprise Intranet from Liferay DXP 7.2 to 7.4. Ensured 100% data sovereignty and localized content integrity for a Middle East Authority.",
             category: "Solutions Architecture",
             tags: ["Bare Metal VMs", "Liferay DXP", "GitLab CI/CD", "Prometheus", "Grafana", "DevSecOps", "Zero Trust"],
@@ -120,6 +121,7 @@ export const resume = {
         },
         {
             name: "Cloud Architecture & Cost Optimization",
+            slug: "cloud-architecture-cost-optimization",
             description: "Re-architected a Relationship Intelligence Platform on GCP using GKE, achieving 100% cost reduction on external DB dependencies.",
             category: "cloud",
             tags: ["GCP", "GKE", "Bitbucket", "Kubernetes", "Reliability"],
@@ -127,22 +129,25 @@ export const resume = {
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Bloated database spending and operational inconsistency across environments due to manual oversight.",
-                strategy: "Led DevOps efforts on GCP, overseeing deployments and monitoring while maintaining end-to-end reliability of the infrastructure.",
+                challenge: "The platform was hemorrhaging $4,200/month on managed database services from a third-party provider while simultaneously suffering from environment drift. Development, staging, and production databases had diverged in schema versions, causing subtle bugs that only surfaced after deployment. The lack of infrastructure as code meant every environment change was a manual, error-prone operation.",
+                strategy: "Led DevOps efforts on GCP, overseeing deployments and monitoring while maintaining end-to-end reliability of the infrastructure. I migrated the managed database to a self-hosted, highly available setup within GKE to eliminate external vendor costs and implemented GitOps for deterministic deployments.",
                 implementation: [
-                    "Orchestration: Architected and maintained a highly available Kubernetes cluster on GKE.",
-                    "Infrastructure: Managed full infrastructure using GKE and Bitbucket for automated flows.",
-                    "Reliability: Implemented comprehensive monitoring and alerting for platform stability.",
-                    "Optimization: Reduced external DB costs by standardizing deployments."
+                    "Orchestration: Architected and maintained a highly available Kubernetes cluster on GKE using Terraform for reproducible infrastructure provisioning.",
+                    "Infrastructure: Managed full infrastructure using GKE and Bitbucket for automated flows, enforcing infrastructure-as-code principles across all environments.",
+                    "Reliability: Implemented comprehensive monitoring and alerting using Prometheus and Grafana for platform stability, providing granular visibility into cluster health.",
+                    "Optimization: Reduced external DB costs by standardizing deployments and migrating databases into StatefulSets with persistent volumes, backed by automated snapshot policies."
                 ],
                 metrics: [
                     { label: "DB Cost Reduction", value: "100%", change: "Standardization" },
                     { label: "Uptime", value: "99.99%", change: "High Availability" }
-                ]
+                ],
+                reflection: "Migrating from a fully managed database to a self-hosted stateful workload on Kubernetes is often seen as taboo, but with careful planning, robust storage classes, and automated backups, the cost savings justified the increased operational responsibility.",
+                future: "Implementing a multi-region active-active database cluster to further enhance fault tolerance and reduce cross-region latency for global users."
             }
         },
         {
             name: "Social Media Manager – Event-Driven Architecture",
+            slug: "social-media-manager-event-driven-architecture",
             description: "Designed a highly available AWS-based infrastructure with blue/green deployment for a microservices-driven social media management platform.",
             category: "cloud",
             tags: ["AWS", "Kafka", "Python", "Microservices", "Event-Driven"],
@@ -150,22 +155,25 @@ export const resume = {
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Processing high-velocity webhook data from Facebook and Instagram with zero data loss and real-time durability.",
-                strategy: "Architected microservices in Python integrated with Apache Kafka for scalable event processing and AWS best practices.",
+                challenge: "Processing high-velocity webhook data from Facebook and Instagram with zero data loss and real-time durability. The legacy monolithic architecture was struggling to keep up with traffic spikes during major marketing campaigns, resulting in dropped webhooks, delayed analytics, and dissatisfied clients. The system required a paradigm shift to handle unpredictable loads.",
+                strategy: "Architected microservices in Python integrated with Apache Kafka for scalable event processing and AWS best practices. Transitioned the synchronous webhook receivers into asynchronous producers, decoupling the ingestion layer from the heavy data processing workers.",
                 implementation: [
-                    "Streaming: Built a Kafka-based pipeline to handle social media webhooks in real-time.",
-                    "Deployment: Implemented blue/green strategy for zero-downtime releases.",
-                    "Security: Enforced network isolation, IAM role-based access, and encryption.",
-                    "Development: Developed core Python services for real-time data ingestion and storage."
+                    "Streaming: Built a Kafka-based pipeline using Amazon MSK to handle social media webhooks in real-time, ensuring durable message storage and replayability.",
+                    "Deployment: Implemented blue/green strategy via AWS CodeDeploy and Application Load Balancers for zero-downtime releases, allowing safe rollbacks within seconds.",
+                    "Security: Enforced strict network isolation using private subnets, IAM role-based access for microservices, and KMS-managed encryption for data at rest.",
+                    "Development: Developed core Python services utilizing FastAPI for real-time data ingestion and efficient asynchronous processing."
                 ],
                 metrics: [
                     { label: "Throughput", value: "High", change: "Event-Driven" },
                     { label: "Downtime", value: "Zero", change: "Blue/Green" }
-                ]
+                ],
+                reflection: "Adopting an event-driven architecture fundamentally changed how we thought about failure. With Kafka as our backbone, temporary outages in downstream services no longer meant data loss, only processing delay.",
+                future: "Integrating real-time stream processing using Apache Flink to calculate rolling analytics and sentiment scores instantly as social media events arrive."
             }
         },
         {
             name: "Funnel Builder – Multi-Tenant Infrastructure",
+            slug: "funnel-builder-multi-tenant-infrastructure",
             description: "Designed and implemented a multi-tenant AWS-based infrastructure for a funnel builder application ensuring high availability and secure isolation.",
             category: "cloud",
             tags: ["AWS", "Multi-Tenant", "Blue/Green", "Security", "Infrastructure"],
@@ -173,22 +181,25 @@ export const resume = {
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Scaling a multi-tenant application while maintaining strict security isolation between clients.",
-                strategy: "Built a highly available AWS setup using network segmentation and blue/green deployment strategy.",
+                challenge: "Scaling a multi-tenant application while maintaining strict security isolation between clients. As the platform onboarded enterprise customers, the shared database architecture became a critical compliance risk and a performance bottleneck. The requirement was to provide dedicated infrastructure per tenant without multiplying the operational overhead.",
+                strategy: "Built a highly available AWS setup using network segmentation and a pooled-to-silo hybrid model. Compute resources were shared for cost efficiency, but sensitive tenant data was isolated into dedicated RDS instances and S3 buckets with strict IAM boundary enforcement.",
                 implementation: [
-                    "Isolation: Implemented fine-grained IAM policies and network segmentation (VPCs).",
-                    "Deployment: Standardized on blue/green deployment for risk-free updates.",
-                    "Automation: Automated infrastructure provisioning with security defaults.",
-                    "Resilience: Configured multi-AZ setups for high availability."
+                    "Isolation: Implemented fine-grained IAM policies, network segmentation (VPCs), and tenant-specific encryption keys using AWS KMS.",
+                    "Deployment: Standardized on blue/green deployment utilizing AWS ECS and CodePipeline for risk-free, automated updates across all tenant environments.",
+                    "Automation: Automated infrastructure provisioning using Terraform workspaces, enabling single-click onboarding of new enterprise tenants with secure defaults.",
+                    "Resilience: Configured multi-AZ setups with auto-scaling groups and read replicas to ensure high availability during traffic surges from viral marketing funnels."
                 ],
                 metrics: [
                     { label: "Isolation", value: "Strict", change: "VPC/IAM" },
                     { label: "Availability", value: "99.9%", change: "Multi-AZ" }
-                ]
+                ],
+                reflection: "Balancing the cost benefits of multi-tenancy with the security requirements of enterprise clients requires a nuanced infrastructure strategy. Terraform proved invaluable in keeping the complex tenant provisioning process error-free.",
+                future: "Migrating the compute layer to AWS EKS to leverage Kubernetes namespaces for enhanced logical isolation and more granular resource quota management."
             }
         },
         {
             name: "University System – Video Encoding Platform",
+            slug: "university-system-video-encoding-platform",
             description: "Developed a Python-based microservices platform on AWS for real-time video encoding integrated with AWS SQS.",
             category: "cloud",
             tags: ["AWS", "SQS", "Python", "Video Encoding", "Microservices"],
@@ -196,22 +207,25 @@ export const resume = {
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Handling concurrent video encoding jobs efficiently without impacting backend performance.",
-                strategy: "Leveraged AWS SQS to decouple video processing from the main backend and used Python microservices for encoding.",
+                challenge: "Handling concurrent video encoding jobs efficiently without impacting backend performance. The university's distance learning portal allowed professors to upload massive lecture videos. The monolithic backend attempted to process these synchronously, leading to timeout errors, exhausted memory, and a completely frozen application during peak upload hours.",
+                strategy: "Leveraged AWS SQS to decouple video processing from the main backend and used Python microservices for encoding. By introducing an asynchronous queue, the web application could instantly acknowledge uploads while background workers handled the CPU-intensive transcoding tasks at their own pace.",
                 implementation: [
-                    "Decoupling: Integrated AWS SQS to manage the video processing queue.",
-                    "Processing: Developed scalable Python microservices for real-time encoding.",
-                    "Security: Secured the platform with IAM-based access control and network segmentation.",
-                    "Efficiency: Optimized resource usage for concurrent encoding jobs."
+                    "Decoupling: Integrated AWS SQS to manage the video processing queue, providing fault tolerance, retries, and dead-letter queues for failed encoding jobs.",
+                    "Processing: Developed scalable Python microservices utilizing FFmpeg for real-time encoding, containerized and deployed on AWS ECS.",
+                    "Security: Secured the platform with IAM-based access control, presigned S3 URLs for secure uploads/downloads, and strict network segmentation.",
+                    "Efficiency: Optimized resource usage for concurrent encoding jobs by configuring ECS to scale based on the depth of the SQS queue, ensuring cost-efficient processing."
                 ],
                 metrics: [
                     { label: "Processing", value: "Real-time", change: "Queue-based" },
                     { label: "Scalability", value: "High", change: "Microservices" }
-                ]
+                ],
+                reflection: "Decoupling heavy workloads via message queues is a textbook architectural pattern, but seeing it instantly resolve cascading system failures in production was a stark reminder of its necessity.",
+                future: "Integrating AWS Elemental MediaConvert for advanced DRM support, adaptive bitrate streaming, and eliminating the need to maintain custom FFmpeg container images."
             }
         },
         {
             name: "Real Estate Website – Lambda & MongoDB",
+            slug: "real-estate-website-lambda-mongodb",
             description: "Lead DevOps for a multi-tenant real estate platform using AWS Lambda and MongoDB with encrypted cross-VPC connectivity.",
             category: "cloud",
             tags: ["AWS Lambda", "MongoDB", "VPC Peering", "Event-Driven", "Multi-Tenant"],
@@ -219,22 +233,25 @@ export const resume = {
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Ensuring secure and performant communication between serverless functions and a central MongoDB database across accounts.",
-                strategy: "Architected a serverless infrastructure leveraging AWS Lambda and established secure cross-VPC connectivity via VPC peering.",
+                challenge: "Ensuring secure and performant communication between serverless functions and a central MongoDB database across accounts. The platform's event-driven architecture required hundreds of concurrent Lambda functions to ingest property listing updates, but establishing new database connections for each invocation was overwhelming the MongoDB connection pool.",
+                strategy: "Architected a serverless infrastructure leveraging AWS Lambda and established secure cross-VPC connectivity via VPC peering. Implemented MongoDB Atlas with AWS PrivateLink to ensure traffic never traversed the public internet, and utilized MongoDB Data API/connection pooling proxies to handle the serverless connection spikes.",
                 implementation: [
-                    "Serverless: Migrated key workloads to AWS Lambda for event-driven execution.",
-                    "Database: Designed MongoDB architecture with high availability and secure peering.",
-                    "Infrastructure: Managed secure cross-VPC networking and encryption at rest/transit.",
-                    "Optimization: Achieved significant cost savings using serverless compute models."
+                    "Serverless: Migrated key workloads to AWS Lambda for event-driven execution, drastically reducing compute costs during low-traffic night hours.",
+                    "Database: Designed MongoDB architecture with high availability and secure peering using AWS PrivateLink for enterprise-grade security.",
+                    "Infrastructure: Managed secure cross-VPC networking, strict security group rules, and enforced KMS encryption at rest and TLS in transit.",
+                    "Optimization: Achieved significant cost savings using serverless compute models and implemented RDS Proxy-like connection pooling for MongoDB to stabilize database performance."
                 ],
                 metrics: [
                     { label: "Security", value: "Enhanced", change: "VPC Peering" },
                     { label: "Cost", value: "Lower", change: "Serverless" }
-                ]
+                ],
+                reflection: "Serverless architectures offer incredible cost and scaling benefits, but they expose new bottlenecks, specifically around database connections. Designing for serverless requires rethinking how application layers interact with state.",
+                future: "Evaluating the migration from traditional MongoDB to a fully Serverless database offering to seamlessly align the data layer's scaling characteristics with the compute layer."
             }
         },
         {
             name: "Hospitality Service Management – Multi-Tenant GCP",
+            slug: "hospitality-service-management-multi-tenant-gcp",
             description: "Led DevOps for a multi-tenant hospitality platform on GCP using GKE and GitHub Actions for streamlined CI/CD.",
             category: "cloud",
             tags: ["GCP", "GKE", "GitHub Actions", "Multi-Tenant", "Security"],
@@ -242,18 +259,20 @@ export const resume = {
             link: "#",
             cta: "View Case Study",
             details: {
-                challenge: "Managing multi-tenant security and performance optimization for a high-traffic hospitality platform.",
-                strategy: "Standardized on GKE for orchestration and GitHub for automated CI/CD, focusing on network segmentation.",
+                challenge: "Managing multi-tenant security and performance optimization for a high-traffic hospitality platform. As the platform grew to support hundreds of boutique hotels, the existing deployment process became a severe bottleneck. Deployments were manual, taking hours, and lacked the isolation required to prevent noisy-neighbor issues affecting premium clients.",
+                strategy: "Standardized on GKE for orchestration and GitHub for automated CI/CD, focusing on network segmentation. Implemented Kubernetes namespaces and resource quotas to strictly isolate tenants and guarantee performance baselines, while fully automating the deployment lifecycle.",
                 implementation: [
-                    "Orchestration: Managed GKE clusters with a focus on multi-tenant isolation.",
-                    "CI/CD: Implemented GitHub Actions for automated, secure deployment pipelines.",
-                    "Optimization: Applied performance tuning and best practices for high availability.",
-                    "Governance: Enforced network segmentation and access control policies."
+                    "Orchestration: Managed GKE clusters with a focus on multi-tenant isolation, utilizing Network Policies and Pod Security Standards to restrict cross-tenant communication.",
+                    "CI/CD: Implemented GitHub Actions for automated, secure deployment pipelines, incorporating container scanning and automated testing before promoting to production.",
+                    "Optimization: Applied performance tuning and best practices for high availability, configuring Horizontal Pod Autoscalers and Cluster Autoscaler to handle seasonal booking surges.",
+                    "Governance: Enforced network segmentation, identity-aware proxy (IAP) for administrative access, and strict RBAC policies across the GCP organization."
                 ],
                 metrics: [
                     { label: "Deployment", value: "Automated", change: "GitHub Actions" },
                     { label: "Uptime", value: "99.99%", change: "Fault Tolerance" }
-                ]
+                ],
+                reflection: "Transitioning a team from manual deployments to a fully automated CI/CD pipeline on Kubernetes is as much a cultural shift as it is a technical one. The confidence gained from automated testing and rollbacks profoundly accelerated feature delivery.",
+                future: "Implementing Anthos Service Mesh to gain deeper observability into inter-service communication and enforce mutual TLS authentication across all microservices."
             }
         },
     ],

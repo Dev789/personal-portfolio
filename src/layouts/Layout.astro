@@ -4,6 +4,7 @@ interface Props {
 	title: string;
 	description?: string;
 	canonicalUrl?: string;
+	noindex?: boolean;
 	ogImage?: string;
 	ogType?: string;
 	keywords?: string;
@@ -14,6 +15,7 @@ const {
 	title,
 	description = "Dev Joshi | DevOps Engineer. Cloud infrastructure, Kubernetes, CI/CD & automation specialist. Available for consulting.",
 	canonicalUrl,
+	noindex = false,
 	ogImage = "/images/hero-devops.png",
 	ogType = "website",
 	keywords = "DevOps Engineer, Cloud Infrastructure, Kubernetes, CI/CD, AWS, GCP, Azure, Terraform, Docker, DevOps Portfolio, Site Reliability, Infrastructure as Code, DevOps Consultant, Scalable Automation, Dev Joshi",
@@ -21,7 +23,12 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://dev-joshi.pages.dev";
-const currentUrl = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+const normalizeCanonical = (pathname: string) => {
+  const cleanPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+  return new URL(cleanPath, siteUrl).href;
+};
+
+const currentUrl = canonicalUrl || normalizeCanonical(Astro.url.pathname);
 const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 
 // Normalize JSON-LD to array
@@ -33,11 +40,12 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="keywords" content={keywords} />
 		<meta name="author" content="Dev Joshi" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 		<meta name="google-site-verification" content="mfo8Gb1-h3iqKGtmhlsTgF9q8d0ZoVo3EgnUVcoL57k" />
 		<title>{title}</title>
 		<link rel="canonical" href={currentUrl} />
@@ -126,7 +134,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
             }
         </style>
 	</head>
-	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-selection selection:text-white dark:selection:bg-editorial-primary-dark cursor-none" style="overflow: hidden;">
+	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-selection selection:text-white dark:selection:bg-editorial-primary-dark has-custom-cursor" style="overflow: hidden;">
         <div id="app-loader" aria-hidden="true">
             <div class="loader-shell">
                 <svg
@@ -510,8 +518,21 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     }
 
     /* Hide cursor on interactive elements as we use a custom one */
-    a, button, [role="button"], input, textarea, select {
-        cursor: none !important;
+    @media (hover: hover) and (pointer: fine) {
+        body.has-custom-cursor,
+        body.has-custom-cursor a,
+        body.has-custom-cursor button,
+        body.has-custom-cursor [role="button"],
+        body.has-custom-cursor input,
+        body.has-custom-cursor textarea,
+        body.has-custom-cursor select {
+            cursor: none !important;
+        }
+    }
+
+    :focus-visible {
+        outline: 2px solid #df492f;
+        outline-offset: 3px;
     }
 
     #app-loader {
