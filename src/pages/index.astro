@@ -21,7 +21,11 @@ const personSchema = {
 	"@type": "Person",
 	"name": "Dev Joshi",
 	"jobTitle": "DevOps Engineer",
-	"url": siteUrl,
+	"worksFor": {
+		"@type": "Organization",
+		"name": "Inexture Solutions"
+	},
+	"url": "https://dev-joshi.pages.dev/",
 	"image": `${siteUrl}/images/hero-devops.png`,
 	"email": "https://calendly.com/joshid647/30min",
 	"address": {
@@ -31,14 +35,15 @@ const personSchema = {
 		"addressCountry": "IN"
 	},
 	"sameAs": [
-		resume.basics.profiles.find(p => p.network === 'LinkedIn')?.url,
-		resume.basics.profiles.find(p => p.network === 'GitHub')?.url
-	].filter(Boolean),
+		"https://linkedin.com/in/YOUR_LINKEDIN_PLACEHOLDER",
+		"https://github.com/YOUR_GITHUB_PLACEHOLDER"
+	],
 	"knowsAbout": [
-		"DevOps", "Cloud Infrastructure", "AWS", "GCP", "Azure",
-		"Kubernetes", "Docker", "Terraform", "CI/CD", "Jenkins",
-		"GitHub Actions", "SOC 2 Compliance", "Infrastructure as Code",
-		"Site Reliability Engineering"
+		"DevOps",
+		"Kubernetes",
+		"AWS",
+		"CI/CD",
+		"Cloud Infrastructure"
 	],
 	"description": resume.basics.summary
 };
