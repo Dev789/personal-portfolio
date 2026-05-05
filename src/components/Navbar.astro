@@ -41,7 +41,7 @@ const navItems = [
           })}
           
           <!-- Theme Toggle Slider -->
-          <button id="theme-toggle" class="relative inline-flex items-center h-8 w-14 rounded-full p-1 bg-editorial-outline/10 dark:bg-editorial-surface-highest-dark/50 transition-colors duration-300 group overflow-hidden border border-editorial-outline/20 dark:border-editorial-surface-highest-dark" aria-label="Toggle theme">
+          <button id="theme-toggle" class="relative inline-flex h-8 w-14 shrink-0 items-center overflow-hidden border border-editorial-outline/20 bg-editorial-outline/10 transition-colors duration-300 dark:border-editorial-surface-highest-dark dark:bg-editorial-surface-highest-dark/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-editorial-primary" aria-label="Toggle theme">
             <!-- Background Icons (Fixed) -->
             <div class="absolute left-1.5 z-0 text-editorial-secondary/20 dark:text-editorial-secondary-dark/20 transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,7 +54,7 @@ const navItems = [
               </svg>
             </div>
             <!-- Slider Thumb -->
-            <div id="theme-slider-thumb" class="z-10 h-6 w-6 rounded-full bg-editorial-primary dark:bg-editorial-primary-dark transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-center transform translate-x-0 dark:translate-x-6 shadow-sm">
+            <div id="theme-slider-thumb" class="absolute left-1 top-1/2 z-10 flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center bg-editorial-primary shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] dark:translate-x-6 dark:bg-editorial-primary-dark">
               <div class="relative w-full h-full flex items-center justify-center">
                 <svg id="thumb-sun-icon" class="w-3.5 h-3.5 text-white transition-all duration-300 opacity-100 dark:opacity-0 dark:scale-0 absolute" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -76,7 +76,7 @@ const navItems = [
        <!-- Mobile Menu Button -->
        <div class="md:hidden flex items-center gap-4">
          <!-- Mobile Theme Toggle -->
-          <button id="mobile-theme-toggle" class="relative inline-flex items-center h-11 w-16 p-1 bg-editorial-outline/10 dark:bg-editorial-surface-highest-dark/50 transition-colors duration-300 group overflow-hidden border border-editorial-outline/20 dark:border-editorial-surface-highest-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-editorial-primary" aria-label="Toggle theme">
+          <button id="mobile-theme-toggle" class="relative inline-flex h-8 w-14 shrink-0 items-center overflow-hidden border border-editorial-outline/20 bg-editorial-outline/10 transition-colors duration-300 dark:border-editorial-surface-highest-dark dark:bg-editorial-surface-highest-dark/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-editorial-primary" aria-label="Toggle theme">
             <div class="absolute left-1.5 z-0 text-editorial-secondary/20 dark:text-editorial-secondary-dark/20 transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -87,7 +87,7 @@ const navItems = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             </div>
-            <div class="z-10 h-6 w-6 rounded-full bg-editorial-primary dark:bg-editorial-primary-dark transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-center transform translate-x-0 dark:translate-x-6 shadow-sm">
+            <div class="absolute left-1 top-1/2 z-10 flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center bg-editorial-primary shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] dark:translate-x-6 dark:bg-editorial-primary-dark">
               <div class="relative w-full h-full flex items-center justify-center">
                 <svg class="w-3.5 h-3.5 text-white transition-all duration-300 opacity-100 dark:opacity-0 dark:scale-0 absolute" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
