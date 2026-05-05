@@ -18,7 +18,7 @@ const imageMap = {
 export function getStaticPaths() {
   return resume.projects.map((project) => ({
     params: { 
-      slug: project.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') 
+      slug: project.slug 
     },
     props: { project },
   }));
@@ -27,7 +27,7 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 
 const siteUrl = "https://dev-joshi.pages.dev";
-const slug = project.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+const slug = project.slug;
 const projectUrl = `${siteUrl}/projects/${slug}`;
 
 // Trim description to max 155 chars at a natural boundary
@@ -189,6 +189,26 @@ const breadcrumbSchema = {
             </div>
         </div>
       </div>
+
+      <!-- Related Case Studies -->
+      <section class="mt-24 pt-16 border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark">
+        <h2 class="text-xs font-mono font-bold text-editorial-primary dark:text-editorial-primary-dark uppercase tracking-[0.3em] mb-12">Other Case Studies</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {resume.projects
+            .filter(p => p.name !== project.name)
+            .slice(0, 2)
+            .map(p => {
+              const pSlug = p.slug;
+              return (
+                <a href={`/projects/${pSlug}`} class="group p-8 bg-editorial-surface-low dark:bg-editorial-surface-low-dark hover:bg-editorial-surface-highest dark:hover:bg-editorial-surface-highest-dark transition-all border border-transparent hover:border-editorial-surface-highest dark:hover:border-editorial-surface-highest-dark">
+                  <h3 class="text-xl font-bold text-editorial-text dark:text-editorial-text-dark group-hover:text-editorial-primary dark:group-hover:text-editorial-primary-dark transition-colors mb-3">{p.name}</h3>
+                  <p class="text-editorial-secondary dark:text-editorial-secondary-dark text-sm font-light leading-relaxed line-clamp-2">{p.description}</p>
+                </a>
+              );
+            })
+          }
+        </div>
+      </section>
 
       <!-- Footer Action -->
       <div class="mt-32 pt-16 border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark text-center">

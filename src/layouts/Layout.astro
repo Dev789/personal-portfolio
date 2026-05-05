@@ -4,6 +4,7 @@ interface Props {
 	title: string;
 	description?: string;
 	canonicalUrl?: string;
+	noindex?: boolean;
 	ogImage?: string;
 	ogType?: string;
 	keywords?: string;
@@ -14,6 +15,7 @@ const {
 	title,
 	description = "Dev Joshi | DevOps Engineer. Cloud infrastructure, Kubernetes, CI/CD & automation specialist. Available for consulting.",
 	canonicalUrl,
+	noindex = false,
 	ogImage = "/images/hero-devops.png",
 	ogType = "website",
 	keywords = "DevOps Engineer, Cloud Infrastructure, Kubernetes, CI/CD, AWS, GCP, Azure, Terraform, Docker, DevOps Portfolio, Site Reliability, Infrastructure as Code, DevOps Consultant, Scalable Automation, Dev Joshi",
@@ -21,7 +23,12 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://dev-joshi.pages.dev";
-const currentUrl = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+const normalizeCanonical = (pathname: string) => {
+  const cleanPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+  return new URL(cleanPath, siteUrl).href;
+};
+
+const currentUrl = canonicalUrl || normalizeCanonical(Astro.url.pathname);
 const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 
 // Normalize JSON-LD to array
@@ -38,6 +45,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 		<meta name="author" content="Dev Joshi" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 		<meta name="google-site-verification" content="mfo8Gb1-h3iqKGtmhlsTgF9q8d0ZoVo3EgnUVcoL57k" />
 		<title>{title}</title>
 		<link rel="canonical" href={currentUrl} />

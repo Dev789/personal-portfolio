@@ -51,7 +51,7 @@ projects = projects.map(p => ({
     <!-- Project Grid (Gap-px logic with bleed-to-edge borders on mobile) -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#f0f0f0] dark:bg-editorial-surface-highest-dark overflow-hidden md:px-0" id="projects-grid">
       {projects.map((project) => {
-        const slug = project.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        const slug = project.slug;
         return (
           <div 
             class="project-card group bg-editorial-surface dark:bg-editorial-surface-dark transition-all duration-300 flex flex-col" 
