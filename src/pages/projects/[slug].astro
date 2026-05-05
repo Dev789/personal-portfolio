@@ -55,7 +55,7 @@ const breadcrumbSchema = {
 >
   <Navbar />
   <main class="pt-32 pb-32 bg-editorial-surface dark:bg-editorial-surface-dark min-h-screen transition-colors duration-500">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="w-full px-[clamp(1rem,5vw,7rem)]">
       
       <!-- Header -->
       <div class="mb-16">
@@ -84,17 +84,19 @@ const breadcrumbSchema = {
           <Image 
             src={imageMap[project.image]} 
             alt={`${project.name} specification visual`} 
-            class="w-full h-64 md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
-            width={1200}
-            height={600}
+            class="w-full aspect-[16/9] max-h-[70vh] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
+            widths={[480, 768, 1024, 1200, 1600]}
+            sizes="(min-width: 1024px) 1152px, 100vw"
             loading="eager"
           />
         ) : (
           <img 
             src={project.image} 
             alt={`${project.name} specification visual`} 
-            loading="lazy" 
-            class="w-full h-64 md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out" 
+            width="1200"
+            height="600"
+            loading="lazy"
+            class="w-full aspect-[16/9] max-h-[70vh] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out" 
           />
         )}
       </div>

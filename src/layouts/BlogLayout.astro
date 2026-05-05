@@ -84,7 +84,7 @@ const breadcrumbSchema = {
       </div>
 
       <header class="mb-12 text-left">
-        <div class="flex items-center justify-start gap-4 font-mono text-xs uppercase tracking-widest text-editorial-secondary dark:text-editorial-secondary-dark mb-6">
+        <div class="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-widest text-editorial-secondary dark:text-editorial-secondary-dark mb-6">
           <span class="text-editorial-primary dark:text-editorial-primary-dark font-bold">{frontmatter.category || 'Tech'}</span>
           <span>/</span>
           <span><time datetime={frontmatter.date}>{frontmatter.date}</time></span>
@@ -110,7 +110,7 @@ const breadcrumbSchema = {
 
       <!-- Footer CTA -->
       <div class="mt-16 pt-12 border-t border-editorial-surface-highest dark:border-editorial-surface-highest-dark">
-        <a href="https://tinyurl.com/devjoshimedium" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 p-6 transition-all group bg-editorial-text dark:bg-editorial-primary-dark text-editorial-surface dark:text-editorial-surface-dark hover:bg-editorial-primary dark:hover:bg-editorial-text-dark font-mono text-xs uppercase tracking-widest">
+        <a href="https://tinyurl.com/devjoshimedium" target="_blank" rel="noopener noreferrer" class="flex flex-col sm:flex-row items-center justify-center gap-3 p-6 text-center transition-all group bg-editorial-text dark:bg-editorial-primary-dark text-editorial-surface dark:text-editorial-surface-dark hover:bg-editorial-primary dark:hover:bg-editorial-text-dark font-mono text-xs uppercase tracking-widest">
             <span>Read more articles on</span>
             <span class="font-bold flex items-center gap-1 underline underline-offset-4">
                 Medium
@@ -258,12 +258,19 @@ const breadcrumbSchema = {
   .blog-content pre {
     background-color: #1a1a1a !important;
     color: #e0e0e0 !important;
-    padding: 1.5rem 2rem;
+    padding: 1rem;
+    max-width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border: 1px solid #2d2d2d;
     margin: 1.5rem 0;
     font-size: 0.875rem;
     line-height: 1.7;
+  }
+  @media (min-width: 640px) {
+    .blog-content pre {
+      padding: 1.5rem 2rem;
+    }
   }
   .dark .blog-content pre {
     background-color: #111111 !important;
@@ -287,8 +294,11 @@ const breadcrumbSchema = {
 
   /* Images */
   .blog-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
     border: 1px solid #e4e2e2;
-    margin: 2rem 0;
+    margin: 2rem auto;
   }
   .dark .blog-content img {
     border-color: #2d2d2d;
@@ -333,7 +343,11 @@ const breadcrumbSchema = {
     margin: 0 !important;
   }
 
-  /* Copy button */
+  .copy-btn,
+  #share-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
   .copy-btn {
     position: absolute !important;
     top: 0.5rem;
@@ -341,8 +355,8 @@ const breadcrumbSchema = {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     color: #888;
     background: #2a2a2a;
