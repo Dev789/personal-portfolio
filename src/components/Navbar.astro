@@ -76,7 +76,7 @@ const navItems = [
        <!-- Mobile Menu Button -->
        <div class="md:hidden flex items-center gap-4">
          <!-- Mobile Theme Toggle -->
-          <button id="mobile-theme-toggle" class="relative inline-flex items-center h-8 w-14 rounded-full p-1 bg-editorial-outline/10 dark:bg-editorial-surface-highest-dark/50 transition-colors duration-300 group overflow-hidden border border-editorial-outline/20 dark:border-editorial-surface-highest-dark" aria-label="Toggle theme">
+          <button id="mobile-theme-toggle" class="relative inline-flex items-center h-11 w-16 p-1 bg-editorial-outline/10 dark:bg-editorial-surface-highest-dark/50 transition-colors duration-300 group overflow-hidden border border-editorial-outline/20 dark:border-editorial-surface-highest-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-editorial-primary" aria-label="Toggle theme">
             <div class="absolute left-1.5 z-0 text-editorial-secondary/20 dark:text-editorial-secondary-dark/20 transition-colors">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -99,7 +99,7 @@ const navItems = [
             </div>
           </button>
 
-        <button type="button" id="mobile-menu-btn" class="text-editorial-text dark:text-editorial-text-dark hover:text-editorial-primary focus:outline-none">
+        <button type="button" id="mobile-menu-btn" class="inline-flex min-h-11 min-w-11 items-center justify-center text-editorial-text dark:text-editorial-text-dark hover:text-editorial-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-editorial-primary" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false">
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -290,7 +290,8 @@ const navItems = [
 
   if (btn && menu) {
     btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isHidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isHidden));
     });
 
     // Close menu when clicking a link

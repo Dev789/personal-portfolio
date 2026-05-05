@@ -85,15 +85,17 @@ const breadcrumbSchema = {
             src={imageMap[project.image]} 
             alt={`${project.name} specification visual`} 
             class="w-full h-64 md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
-            width={1200}
-            height={600}
+            widths={[480, 768, 1024, 1200, 1600]}
+            sizes="(min-width: 1024px) 1152px, 100vw"
             loading="eager"
           />
         ) : (
           <img 
             src={project.image} 
             alt={`${project.name} specification visual`} 
-            loading="lazy" 
+            width="1200"
+            height="600"
+            loading="lazy"
             class="w-full h-64 md:h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out" 
           />
         )}

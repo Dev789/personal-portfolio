@@ -21,7 +21,7 @@ import { resume } from '../data/resume';
       </div>
 
       <!-- Terminal Body -->
-      <div class="p-8 h-[450px] overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-[#444] scrollbar-track-transparent" id="terminal-container" onclick="document.getElementById('terminal-input').focus()">
+      <div class="p-4 sm:p-8 h-[360px] sm:h-[450px] overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-[#444] scrollbar-track-transparent" id="terminal-container" onclick="document.getElementById('terminal-input').focus()">
         <div id="terminal-output" class="mb-2">
           <div class="mb-6 text-slate-400">
             <span class="text-editorial-primary dark:text-editorial-primary-dark">➜</span> <span class="text-editorial-primary dark:text-editorial-primary-dark font-bold">~</span> <span class="opacity-60"># Technical Monograph CLI Protocol Loaded</span><br/>
@@ -64,7 +64,7 @@ import { resume } from '../data/resume';
             desc: 'List available commands',
             action: () => {
                 return `
-<div class="grid grid-cols-[100px_1fr] gap-2 text-slate-300">
+<div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-2 text-slate-300">
     <span class="text-editorial-primary font-bold">about</span>    <span>Identity Summary</span>
     <span class="text-editorial-primary font-bold">skills</span>   <span>Technical Inventory</span>
     <span class="text-editorial-primary font-bold">projects</span> <span>Operational Archives</span>

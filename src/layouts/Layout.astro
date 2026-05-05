@@ -40,7 +40,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="keywords" content={keywords} />
 		<meta name="author" content="Dev Joshi" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
@@ -134,7 +134,7 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
             }
         </style>
 	</head>
-	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-selection selection:text-white dark:selection:bg-editorial-primary-dark cursor-none" style="overflow: hidden;">
+	<body class="bg-editorial-surface text-editorial-text dark:bg-editorial-surface-dark dark:text-editorial-text-dark font-mono antialiased selection:bg-editorial-selection selection:text-white dark:selection:bg-editorial-primary-dark has-custom-cursor" style="overflow: hidden;">
         <div id="app-loader" aria-hidden="true">
             <div class="loader-shell">
                 <svg
@@ -518,8 +518,21 @@ const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     }
 
     /* Hide cursor on interactive elements as we use a custom one */
-    a, button, [role="button"], input, textarea, select {
-        cursor: none !important;
+    @media (hover: hover) and (pointer: fine) {
+        body.has-custom-cursor,
+        body.has-custom-cursor a,
+        body.has-custom-cursor button,
+        body.has-custom-cursor [role="button"],
+        body.has-custom-cursor input,
+        body.has-custom-cursor textarea,
+        body.has-custom-cursor select {
+            cursor: none !important;
+        }
+    }
+
+    :focus-visible {
+        outline: 2px solid #df492f;
+        outline-offset: 3px;
     }
 
     #app-loader {
